@@ -15,7 +15,7 @@ namespace F_RS232Client.DataProtocols
         }
 
         #region DataProtocol implementation
-        public void Open()
+        override public void Open()
         {
             if (IsOpen)
                 return;
@@ -23,7 +23,7 @@ namespace F_RS232Client.DataProtocols
             internalPort.Open();
         }
 
-        public bool IsOpen
+        override public bool IsOpen
         {
             get
             {
@@ -31,7 +31,7 @@ namespace F_RS232Client.DataProtocols
             }
         }
 
-        public void Close()
+        override public void Close()
         {
             internalPort.Close();
         }

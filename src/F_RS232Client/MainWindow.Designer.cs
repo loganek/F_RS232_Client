@@ -28,13 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.senderControlPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // senderControlPanel
+            // 
+            this.senderControlPanel.Location = new System.Drawing.Point(84, 39);
+            this.senderControlPanel.Name = "senderControlPanel";
+            this.senderControlPanel.Size = new System.Drawing.Size(633, 282);
+            this.senderControlPanel.TabIndex = 0;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 415);
+            this.Controls.Add(this.senderControlPanel);
             this.Name = "MainWindow";
             this.Text = "F_RS232Client";
             this.ResumeLayout(false);
@@ -42,6 +51,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel senderControlPanel;
     }
 }
 

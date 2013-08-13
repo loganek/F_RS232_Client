@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProtocols\DataProtocol.cs" />
+    <Compile Include="DataProtocols\SerialPort.cs" />
     <Compile Include="IWriteable.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
