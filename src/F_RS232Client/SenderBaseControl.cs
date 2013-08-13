@@ -11,9 +11,43 @@ namespace F_RS232Client
 {
     public partial class SenderBaseControl : UserControl
     {
-        public SenderBaseControl()
+        private IWriteable destination;
+
+        public event EventHandler ErrorOccured;
+
+        public SenderBaseControl(IWriteable destination)
         {
             InitializeComponent();
+
+            this.destination = destination;
+        }
+
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+            string dataToSend = dataToSendTextBox.Text;
+
+            try
+            {
+                destination.Write(dataToSend);
+            }
+            catch (Exception exception)
+            {
+                LogMessage(exception);    
+            }
+        }
+
+        private void LogMessage(Exception exception)
+        {
+            // TODO: implement message loggin
+
+            // TODO: event arg with exception?
+            OnErrorOccured(null);
+        }
+
+        private void OnErrorOccured(EventArgs e)
+        {
+            if (ErrorOccured != null)
+                ErrorOccured(this, e);
         }
     }
 }
