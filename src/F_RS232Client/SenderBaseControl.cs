@@ -47,7 +47,7 @@ namespace F_RS232Client
 
         private void LogData(string data)
         {
-            dataToSendTextBox.AppendText(data);
+            sentDataRichTextBox.AppendText(data);
         }
 
         private void OnErrorOccured(EventArgs e)
