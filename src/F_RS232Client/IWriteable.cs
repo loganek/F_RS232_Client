@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client
 {
-    interface IWriteable
+    public interface IWriteable
     {
         void Write(byte[] bytes);
         void Write(byte b);

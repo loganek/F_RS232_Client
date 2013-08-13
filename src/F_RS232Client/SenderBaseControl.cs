@@ -29,6 +29,7 @@ namespace F_RS232Client
             try
             {
                 destination.Write(dataToSend);
+                LogData(dataToSend);
             }
             catch (Exception exception)
             {
@@ -42,6 +43,11 @@ namespace F_RS232Client
 
             // TODO: event arg with exception?
             OnErrorOccured(null);
+        }
+
+        private void LogData(string data)
+        {
+            dataToSendTextBox.AppendText(data);
         }
 
         private void OnErrorOccured(EventArgs e)

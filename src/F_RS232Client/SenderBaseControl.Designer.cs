@@ -52,6 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sentDataRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.sentDataRichTextBox.Name = "sentDataRichTextBox";
+            this.sentDataRichTextBox.ReadOnly = true;
             this.sentDataRichTextBox.Size = new System.Drawing.Size(502, 188);
             this.sentDataRichTextBox.TabIndex = 0;
             this.sentDataRichTextBox.Text = "";
