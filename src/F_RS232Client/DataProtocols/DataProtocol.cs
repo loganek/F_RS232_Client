@@ -8,7 +8,10 @@ namespace F_RS232Client.DataProtocols
     abstract class DataProtocol
     {
         public abstract void Open();
-        public abstract bool IsOpen();
+        public abstract bool IsOpen
+        {
+            get;
+        }
         public abstract void Close();
     }
 }
