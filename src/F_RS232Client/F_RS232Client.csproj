@@ -78,6 +78,7 @@
     <Compile Include="SenderBaseControl.Designer.cs">
       <DependentUpon>SenderBaseControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="StringParser.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

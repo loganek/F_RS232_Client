@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client
 {
-    class StrToBytesConverter
+    public class StrToBytesConverter
     {
         #region Static members
         private static char preSign = '\\';
@@ -95,11 +95,11 @@ namespace F_RS232Client
         #endregion
     }
 
-    class BytesToStrConverter
+    public class BytesToStrConverter
     {
         #region Members
         private byte[] bytes;
-        private string? str;
+        private string str = null;
         int currPos = 0;
         #endregion
 
@@ -113,21 +113,24 @@ namespace F_RS232Client
             if (str == null)
                 Parse();
 
-            return str.GetValueOrDefault(String.Empty);
+            return str;
         }
 
         #region Private methods
         private void Parse()
         {
             if (bytes == null)
+            {
                 str = String.Empty;
+                return;
+            }
 
             StringBuilder strb = new StringBuilder();
 
-            for(int i =0; i < currPos; i++)
+            for(currPos = 0; currPos < bytes.Length; currPos++)
             {
                 if (IsVisible())
-                    strb.Append(bytes[currPos]);
+                    strb.Append(Convert.ToChar(bytes[currPos]));
                 else
                     strb.Append(ToHex());
             }
