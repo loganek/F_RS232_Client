@@ -25,7 +25,7 @@ namespace F_RS232Client
 
         public StrToBytesConverter(string str)
         {
-            this.str = str;
+            this.str = str == null ? string.Empty : str;
         }
 
         public byte[] GetBytes()
@@ -69,20 +69,20 @@ namespace F_RS232Client
         #region Mini conversions
         private byte ConvertHex()
         {
-            if (currPos + 3 == str.Length)
+            if (currPos + 3 >= str.Length)
                 throw new Exception("Cannot parse string");
 
             currPos += 3;
-            return Convert.ToByte(str.Substring(currPos + 2, 2), 16);
+            return Convert.ToByte(str.Substring(currPos - 1, 2), 16);
         }
 
         private byte ConvertDecimal()
         {
-            if (currPos + 4 == str.Length)
+            if (currPos + 4 >= str.Length)
                 throw new Exception("Cannot parse string");
 
             currPos += 4;
-            return Convert.ToByte(str.Substring(currPos + 2, 3));
+            return Convert.ToByte(str.Substring(currPos - 2, 3));
         }
 
         public byte ConvertSpecialCharacter()

@@ -29,5 +29,120 @@ namespace F_RS232Client_Test
 
             Assert.AreEqual(expected, new F_RS232Client.BytesToStrConverter(input).GetString());
         }
+
+        [TestMethod]
+        public void ExpectedEmptyByteArrayOnEmptyInput()
+        {
+            Assert.AreEqual(0, new F_RS232Client.StrToBytesConverter(string.Empty).GetBytes().Length);
+        }
+
+        [TestMethod]
+        public void ExpectedEmptyByteArrayOnNullInput()
+        {
+            Assert.AreEqual(0, new F_RS232Client.StrToBytesConverter(null).GetBytes().Length);
+        }
+
+        [TestMethod]
+        public void ExpectedValidConvertStringToByteArray()
+        {
+            string input = @"This\nis\rSPARTA!\\and test other \0 special signs";
+            byte[] expected = new byte[] { 84, 104, 105, 115, 10, 105, 115, 13, 83, 
+                80, 65, 82, 84, 65, 33, 92, 97, 110, 100, 32, 116, 101, 115, 116,
+                32, 111, 116, 104, 101, 114, 32, 19, 32, 115, 112, 101, 99, 105, 
+                97, 108, 32, 115, 105, 103, 110, 115};
+
+            byte[] output = new F_RS232Client.StrToBytesConverter(input).GetBytes();
+
+            Assert.AreEqual(expected.Length, output.Length);
+
+            for (int i = 0; i < output.Length; i++)
+                Assert.AreEqual(expected[i], output[i]);
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionBecauseOfWrongInputFormat()
+        {
+            string input = @"This is invalid format\";
+
+            try
+            {
+                new F_RS232Client.StrToBytesConverter(input).GetBytes();
+                Assert.Fail();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        [TestMethod]
+        public void ShouldCorrectParseDifferentFormats()
+        {
+            string input = @"A\x44B\d102\d123";
+            byte[] expected = new byte[] { 65, 0x44, 66, 102, 123 };
+
+            byte[] output = new F_RS232Client.StrToBytesConverter(input).GetBytes();
+
+            Assert.AreEqual(expected.Length, output.Length);
+
+            for (int i = 0; i < output.Length; i++)
+                Assert.AreEqual(expected[i], output[i]);
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionBecauseOfTooShortHex()
+        {
+            bool ok = false;
+            try
+            {
+                new F_RS232Client.StrToBytesConverter(@"This is too short hex: \x1").GetBytes();
+            }
+            catch
+            {
+                ok = true;
+            }
+            finally
+            {
+                if (!ok)
+                    Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionBecauseOfTooShortDec()
+        {
+            bool ok = false;
+            try
+            {
+                new F_RS232Client.StrToBytesConverter(@"This is too short dec: \d13").GetBytes();
+            }
+            catch
+            {
+                ok = true;
+            }
+            finally
+            {
+                if (!ok)
+                    Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void ShouldThrowExceptionBecauseOfUnknowSpecialCharacter()
+        {
+            bool ok = false;
+            try
+            {
+                new F_RS232Client.StrToBytesConverter(@"This is unknow character: \s").GetBytes();
+            }
+            catch
+            {
+                ok = true;
+            }
+            finally
+            {
+                if (!ok)
+                    Assert.Fail();
+            }
+        }
     }
 }
