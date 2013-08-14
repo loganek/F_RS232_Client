@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client.DataProtocols
 {
-    abstract class DataProtocol
+    public abstract class DataProtocol
     {
         public abstract void Open();
         public abstract bool IsOpen

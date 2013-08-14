@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client.DataProtocols
 {
-    class SerialPort : DataProtocol, IWriteable
+    public class SerialPort : DataProtocol, IWriteable
     {
         private System.IO.Ports.SerialPort internalPort;
 
@@ -53,5 +53,13 @@ namespace F_RS232Client.DataProtocols
             internalPort.Write(str);
         }
         #endregion
+
+        public static string[] AvailablePorts
+        {
+            get
+            {
+                return System.IO.Ports.SerialPort.GetPortNames();
+            }
+        }
     }
 }
