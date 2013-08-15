@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace F_RS232Client.PluginsInterfaces
+namespace F_RS232Client.Plugins
 {
     interface IDataWriterPlugin : IPlugin
     {
