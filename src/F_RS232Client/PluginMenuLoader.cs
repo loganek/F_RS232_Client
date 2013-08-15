@@ -7,7 +7,7 @@ namespace F_RS232Client
     class PluginMenuLoader
     {
         private readonly ToolStripMenuItem baseMenuItem;
-        private const int PositionOfUnknowPlugin = 3;
+        private const int PositionOfUnknowPlugin = 2;
         #region constant menu items
         private ToolStripMenuItem connectionPlugins;
         private ToolStripMenuItem viewerPlugins;
@@ -63,6 +63,14 @@ namespace F_RS232Client
             return item;
         }
 
+        private ToolStripMenuItem InsertUnknowPluginToMenu(string text)
+        {
+            var item = new ToolStripMenuItem(text);
+            baseMenuItem.DropDownItems.Insert(baseMenuItem.DropDownItems.Count - PositionOfUnknowPlugin, item);
+
+            return item;
+        }
+
         private void LoadItems()
         {
             pluginService.FindPlugins();
@@ -72,7 +80,6 @@ namespace F_RS232Client
                 ToolStripMenuItem item = InsertPluginToMenu(plugin);
                 IPlugin pluginCopy = plugin;
                 item.Click += (sender, e) => pluginCopy.Start();
-                baseMenuItem.DropDownItems.Insert(baseMenuItem.DropDownItems.Count - PositionOfUnknowPlugin, item);
             }
         }
 
@@ -99,7 +106,7 @@ namespace F_RS232Client
                     parent = writerPlugins;
                     break;
                 default:
-                    parent = baseMenuItem;
+                    return InsertUnknowPluginToMenu(plugin.Name);
                     break;
             }
 
