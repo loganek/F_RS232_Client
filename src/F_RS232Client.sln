@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BA4E1768-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{D6758315-C647-4313-A73C-F394CE64C0CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyPlugin", "DummyPlugin\DummyPlugin.csproj", "{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = F_RS232Client.vsmdi
@@ -63,6 +65,16 @@ Global
 		{E350D593-9C31-4922-901F-552D2D4A4C2F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E350D593-9C31-4922-901F-552D2D4A4C2F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E350D593-9C31-4922-901F-552D2D4A4C2F}.Release|x86.ActiveCfg = Release|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +83,6 @@ Global
 		{0E2AC873-FDDA-44C0-89A1-12CC8490CFE4} = {F53F5581-E3D1-4081-A64C-CDED74677457}
 		{D1DB205F-B7A8-4140-B5E5-BB109B559355} = {BA4E1768-AD76-43E3-A343-88F2098D3B64}
 		{E350D593-9C31-4922-901F-552D2D4A4C2F} = {BA4E1768-AD76-43E3-A343-88F2098D3B64}
+		{6A115AD7-69BA-4C5C-AF3D-7F94A947F4E2} = {D6758315-C647-4313-A73C-F394CE64C0CD}
 	EndGlobalSection
 EndGlobal
