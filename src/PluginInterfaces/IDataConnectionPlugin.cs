@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client.Plugins
 {
-    interface IDataSourcePlugin : IPlugin
+    interface IDataConnectionPlugin : IPlugin
     {
     }
 }

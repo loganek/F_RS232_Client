@@ -2,9 +2,9 @@
 
 namespace DummyPlugin
 {
-    class DummyPlugin : IPlugin
+    public class DummyPlugin : IPlugin
     {
-        DummyPlugin()
+        public DummyPlugin()
         {
             Name = "Simple Dummy Plugin";
             Description = "Do Nothing (or maybe says 'Hello World')";
@@ -21,11 +21,15 @@ namespace DummyPlugin
 
         public void Initialize()
         {
-            System.Windows.Forms.MessageBox.Show("Hello World");
         }
 
         public void Dispose()
         {
+        }
+
+        public void Start()
+        {
+            System.Windows.Forms.MessageBox.Show("Hello World");
         }
         #endregion
     }

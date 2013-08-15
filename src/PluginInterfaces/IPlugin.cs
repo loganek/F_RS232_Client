@@ -11,6 +11,7 @@
         string Version { get; }
         #endregion
 
+        void Start();
         void Initialize();
         void Dispose();
     }

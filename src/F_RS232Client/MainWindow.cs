@@ -6,27 +6,33 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using F_RS232Client.Plugins;
+using F_RS232Client.Types;
 
 namespace F_RS232Client
 {
     public partial class MainWindow : Form
     {
-        SenderBaseControl senderControl;
-        DataProtocols.SerialPort serialPort;
+        readonly PluginService pluginService = new PluginService();
 
         public MainWindow()
         {
             InitializeComponent();
-            InitCustomControls();
-            serialPort.Open();
+
+            LoadPlugins();
         }
 
-        private void InitCustomControls()
+        private void LoadPlugins()
         {
-            serialPort = new DataProtocols.SerialPort("COM1");
-            senderControl = new SenderBaseControl(serialPort);
-            senderControlPanel.Dock = DockStyle.Fill;
-            senderControlPanel.Controls.Add(senderControl);
+            pluginService.FindPlugins();
+
+            foreach (var plugin in from AvailablePlugin availablePlugin in pluginService.AvailablePlugins select availablePlugin.Instance)
+            {
+                ToolStripItem item = new ToolStripMenuItem(plugin.Name);
+                IPlugin pluginCopy = plugin;
+                item.Click += (sender, e) => pluginCopy.Start();
+                pluginsToolStripMenuItem.DropDownItems.Insert(pluginsToolStripMenuItem.DropDownItems.Count - 2, item);
+            }
         }
     }
 }

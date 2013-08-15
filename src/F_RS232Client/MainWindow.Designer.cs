@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.senderControlPanel = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataViewersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataWritersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // senderControlPanel
@@ -38,21 +47,96 @@
             this.senderControlPanel.Size = new System.Drawing.Size(633, 282);
             this.senderControlPanel.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pluginsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // pluginsToolStripMenuItem
+            // 
+            this.pluginsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dataViewersToolStripMenuItem,
+            this.dataWritersToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.reloadPluginsToolStripMenuItem});
+            this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.pluginsToolStripMenuItem.Text = "Plugins";
+            // 
+            // dataViewersToolStripMenuItem
+            // 
+            this.dataViewersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noneToolStripMenuItem});
+            this.dataViewersToolStripMenuItem.Name = "dataViewersToolStripMenuItem";
+            this.dataViewersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dataViewersToolStripMenuItem.Text = "Data Viewers";
+            // 
+            // noneToolStripMenuItem
+            // 
+            this.noneToolStripMenuItem.Enabled = false;
+            this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.noneToolStripMenuItem.Text = "(none)";
+            // 
+            // dataWritersToolStripMenuItem
+            // 
+            this.dataWritersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noneToolStripMenuItem1});
+            this.dataWritersToolStripMenuItem.Name = "dataWritersToolStripMenuItem";
+            this.dataWritersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dataWritersToolStripMenuItem.Text = "Data Writers";
+            // 
+            // noneToolStripMenuItem1
+            // 
+            this.noneToolStripMenuItem1.Enabled = false;
+            this.noneToolStripMenuItem1.Name = "noneToolStripMenuItem1";
+            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
+            this.noneToolStripMenuItem1.Text = "(none)";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // reloadPluginsToolStripMenuItem
+            // 
+            this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
+            this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 415);
             this.Controls.Add(this.senderControlPanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.Text = "F_RS232Client";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel senderControlPanel;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dataViewersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dataWritersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem reloadPluginsToolStripMenuItem;
     }
 }
 
