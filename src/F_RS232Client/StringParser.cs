@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace F_RS232Client
 {
     public class StrToBytesConverter
     {
-        #region Static members
-        private static char preSign = '\\';
-        private static Dictionary<char, byte> specialCharacters = new Dictionary<char, byte>(){
+        #region Consts and static members
+        private const char PreSign = '\\';
+        private static readonly Dictionary<char, byte> SpecialCharacters = new Dictionary<char, byte>
+            {
             {'n', 10},
             {'r', 13},
             {'0', 19},
@@ -18,14 +18,14 @@ namespace F_RS232Client
         #endregion
 
         #region Members
-        string str;
-        int currPos = 0;
-        byte[] bytes = null;
+        readonly string str;
+        int currPos;
+        byte[] bytes;
         #endregion
 
         public StrToBytesConverter(string str)
         {
-            this.str = str == null ? string.Empty : str;
+            this.str = str ?? string.Empty;
         }
 
         public byte[] GetBytes()
@@ -39,12 +39,12 @@ namespace F_RS232Client
         #region Private methods
         private void Parse()
         {
-            List<byte> convertedBytes = new List<byte>();
+            var convertedBytes = new List<byte>();
 
             for (currPos = 0; currPos < str.Length; currPos++)
             {
                 convertedBytes.Add(
-                    (str[currPos] == preSign) ?
+                    (str[currPos] == PreSign) ?
                     ParseSpecialCharacter() :
                     Convert.ToByte(str[currPos]));
             }
@@ -57,13 +57,17 @@ namespace F_RS232Client
             if (currPos + 1 == str.Length)
                 throw new Exception("Cannot parse string");
 
-            if (str[currPos + 1] == 'x')
-                return ConvertHex();
-            else if (str[currPos + 1] == 'd')
-                return ConvertDecimal();
-            else
-                return ConvertSpecialCharacter();
+            switch (str[currPos + 1])
+            {
+                case 'x':
+                    return ConvertHex();
+                case 'd':
+                    return ConvertDecimal();
+                default:
+                    return ConvertSpecialCharacter();
+            }
         }
+
         #endregion
 
         #region Mini conversions
@@ -87,20 +91,21 @@ namespace F_RS232Client
 
         public byte ConvertSpecialCharacter()
         {
-            if (specialCharacters.ContainsKey(str[++currPos]))
-                return specialCharacters[str[currPos]];
-            else
-                throw new Exception("Cannot find special character: " + str[currPos]);
+            if (SpecialCharacters.ContainsKey(str[++currPos]))
+                return SpecialCharacters[str[currPos]];
+
+            throw new Exception("Cannot find special character: " + str[currPos]);
         }
+
         #endregion
     }
 
     public class BytesToStrConverter
     {
         #region Members
-        private byte[] bytes;
-        private string str = null;
-        int currPos = 0;
+        private readonly byte[] bytes;
+        private string str;
+        int currPos;
         #endregion
 
         public BytesToStrConverter(byte[] bytes)
@@ -125,7 +130,7 @@ namespace F_RS232Client
                 return;
             }
 
-            StringBuilder strb = new StringBuilder();
+            var strb = new StringBuilder();
 
             for(currPos = 0; currPos < bytes.Length; currPos++)
             {
