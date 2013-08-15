@@ -6,11 +6,21 @@ using F_RS232Client.Plugins;
 
 namespace F_RS232Client
 {
-    class PluginService : IPluginHost
+    internal enum PluginType
     {
-        private Types.AvailablePlugins colAvailablePlugins = new Types.AvailablePlugins();
+        Connection,
+        Viewer,
+        Writer,
+        BaseViewer,
+        BaseWriter,
+        Unknow
+    }
 
-        public Types.AvailablePlugins AvailablePlugins
+    internal class PluginService : IPluginHost
+    {
+        private AvailablePlugins colAvailablePlugins = new AvailablePlugins();
+
+        public AvailablePlugins AvailablePlugins
         {
             get { return colAvailablePlugins; }
             set { colAvailablePlugins = value; }
@@ -20,12 +30,15 @@ namespace F_RS232Client
         {
             FindPlugins(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins"));
         }
-       
+
         public void FindPlugins(string path)
         {
             colAvailablePlugins.Clear();
 
-            foreach (var fileOn in from fileOn in Directory.GetFiles(path) let file = new FileInfo(fileOn) where file.Extension.Equals(".dll") select fileOn)
+            foreach (var fileOn in from fileOn in Directory.GetFiles(path)
+                                   let file = new FileInfo(fileOn)
+                                   where file.Extension.Equals(".dll")
+                                   select fileOn)
             {
                 AddPlugin(fileOn);
             }
@@ -33,7 +46,7 @@ namespace F_RS232Client
 
         public void ClosePlugins()
         {
-            foreach (Types.AvailablePlugin pluginOn in colAvailablePlugins)
+            foreach (AvailablePlugin pluginOn in colAvailablePlugins)
             {
                 if (pluginOn.Instance != null) pluginOn.Instance.Dispose();
                 pluginOn.Instance = null;
@@ -46,11 +59,17 @@ namespace F_RS232Client
         {
             Assembly pluginAssembly = Assembly.LoadFrom(fileName);
 
-            foreach (var newPlugin in from pluginType in pluginAssembly.GetTypes() where pluginType.IsPublic && !pluginType.IsAbstract let typeInterface = pluginType.GetInterface("F_RS232Client.Plugins.IPlugin", true) where typeInterface != null select new Types.AvailablePlugin
-                {
-                    AssemblyPath = fileName,
-                    Instance = (IPlugin) Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()))
-                })
+            foreach (var newPlugin in from pluginType in pluginAssembly.GetTypes()
+                                      where pluginType.IsPublic && !pluginType.IsAbstract
+                                      let typeInterface = pluginType.GetInterface("F_RS232Client.Plugins.IPlugin", true)
+                                      where typeInterface != null
+                                      select new AvailablePlugin
+                                          {
+                                              AssemblyPath = fileName,
+                                              Instance =
+                                                  (IPlugin)
+                                                  Activator.CreateInstance(pluginAssembly.GetType(pluginType.ToString()))
+                                          })
             {
                 newPlugin.Instance.Host = this;
                 newPlugin.Instance.Initialize();
@@ -60,33 +79,51 @@ namespace F_RS232Client
 
         public void Feedback(string feedback, IPlugin plugin)
         {
-            
+
+        }
+
+        public static PluginType GetPluginType(IPlugin plugin)
+        {
+            if (plugin is IBaseDataViewerPlugin)
+                return PluginType.BaseViewer;
+            if(plugin is IDataViewerPlugin)
+                return PluginType.Viewer;
+            if(plugin is IBaseDataWriterPlugin)
+                return PluginType.BaseWriter;
+            if(plugin is IDataWriterPlugin)
+                return PluginType.Writer;
+            if(plugin is IDataConnectionPlugin)
+                return PluginType.Connection;
+            return PluginType.Unknow;
         }
     }
-    namespace Types
+
+    public class AvailablePlugins : System.Collections.CollectionBase
     {
-        public class AvailablePlugins : System.Collections.CollectionBase
+        public void Add(AvailablePlugin pluginToAdd)
         {
-            public void Add(AvailablePlugin pluginToAdd)
-            {
-                List.Add(pluginToAdd);
-            }
-
-            public void Remove(AvailablePlugin pluginToRemove)
-            {
-                List.Remove(pluginToRemove);
-            }
-
-            public AvailablePlugin Find(string pluginNameOrPath)
-            {
-                return List.Cast<AvailablePlugin>().FirstOrDefault(pluginOn => (pluginOn.Instance.Name.Equals(pluginNameOrPath)) || pluginOn.AssemblyPath.Equals(pluginNameOrPath));
-            }
+            List.Add(pluginToAdd);
         }
 
-        public class AvailablePlugin
+        public void Remove(AvailablePlugin pluginToRemove)
         {
-            public IPlugin Instance { get; set; }
-            public string AssemblyPath { get; set; }
+            List.Remove(pluginToRemove);
         }
+
+        public AvailablePlugin Find(string pluginNameOrPath)
+        {
+            return
+                List.Cast<AvailablePlugin>()
+                    .FirstOrDefault(
+                        pluginOn =>
+                        (pluginOn.Instance.Name.Equals(pluginNameOrPath)) ||
+                        pluginOn.AssemblyPath.Equals(pluginNameOrPath));
+        }
+    }
+
+    public class AvailablePlugin
+    {
+        public IPlugin Instance { get; set; }
+        public string AssemblyPath { get; set; }
     }
 }
