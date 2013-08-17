@@ -11,8 +11,8 @@ namespace F_RS232Client
 
         #region Base panels
 
-        private Control baseWriter;
-        private Control baseReader;
+        private readonly Control baseWriter;
+        private readonly Control baseViewer;
         private readonly Control baseConnection;
 
         #endregion
@@ -27,10 +27,10 @@ namespace F_RS232Client
 
         private readonly PluginService pluginService = new PluginService();
 
-        public PluginMenuLoader(ToolStripMenuItem baseMenuItem, Control baseWriter, Control baseReader, Control baseConnection)
+        public PluginMenuLoader(ToolStripMenuItem baseMenuItem, Control baseWriter, Control baseViewer, Control baseConnection)
         {
             this.baseWriter = baseWriter;
-            this.baseReader = baseReader;
+            this.baseViewer = baseViewer;
             this.baseConnection = baseConnection;
             this.baseMenuItem = baseMenuItem;
         }
@@ -92,16 +92,32 @@ namespace F_RS232Client
                 ToolStripMenuItem item = InsertPluginToMenu(plugin);
                 IPlugin pluginCopy = plugin;
 
-                if (plugin is IBaseDataWriterPlugin)
-                    item.Click += (sender, args) =>
-                        {
-                            var baseDataWriterPlugin = pluginCopy as IBaseDataWriterPlugin;
-                            if (baseDataWriterPlugin != null)
-                                baseWriter.Controls.Add(baseDataWriterPlugin.GetControl());
-                        };
+                if (plugin is IBasePlugin)
+                    AppendClickMethodToBasePlugin(item, plugin as IBasePlugin);
 
                 item.Click += (sender, e) => pluginCopy.Start();
             }
+        }
+
+        private void AppendClickMethodToBasePlugin(ToolStripMenuItem item, IBasePlugin plugin)
+        {
+            Control parentControl = null;
+
+            switch (PluginService.GetPluginType(plugin))
+            {
+                case PluginType.BaseViewer:
+                    parentControl = baseViewer;
+                    break;
+                case PluginType.BaseWriter:
+                    parentControl = baseWriter;
+                    break;
+                case PluginType.Connection:
+                    parentControl = baseConnection;
+                    break;
+            }
+
+            item.Click += (sender, args) =>
+                { if (parentControl != null) parentControl.Controls.Add(plugin.GetControl()); };
         }
 
         private ToolStripMenuItem InsertPluginToMenu(IPlugin plugin)
