@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.senderControlPanel = new System.Windows.Forms.Panel();
+            this.baseWriterPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataViewersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,12 +40,12 @@
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // senderControlPanel
+            // baseWriterPanel
             // 
-            this.senderControlPanel.Location = new System.Drawing.Point(84, 39);
-            this.senderControlPanel.Name = "senderControlPanel";
-            this.senderControlPanel.Size = new System.Drawing.Size(633, 282);
-            this.senderControlPanel.TabIndex = 0;
+            this.baseWriterPanel.Location = new System.Drawing.Point(84, 39);
+            this.baseWriterPanel.Name = "baseWriterPanel";
+            this.baseWriterPanel.Size = new System.Drawing.Size(633, 282);
+            this.baseWriterPanel.TabIndex = 0;
             // 
             // mainMenuStrip
             // 
@@ -73,7 +73,7 @@
             this.dataViewersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noneToolStripMenuItem});
             this.dataViewersToolStripMenuItem.Name = "dataViewersToolStripMenuItem";
-            this.dataViewersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dataViewersToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.dataViewersToolStripMenuItem.Text = "Data Viewers";
             // 
             // noneToolStripMenuItem
@@ -88,7 +88,7 @@
             this.dataWritersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noneToolStripMenuItem1});
             this.dataWritersToolStripMenuItem.Name = "dataWritersToolStripMenuItem";
-            this.dataWritersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dataWritersToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.dataWritersToolStripMenuItem.Text = "Data Writers";
             // 
             // noneToolStripMenuItem1
@@ -101,12 +101,12 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(140, 6);
             // 
             // reloadPluginsToolStripMenuItem
             // 
             this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
-            this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
             // 
             // MainWindow
@@ -114,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 415);
-            this.Controls.Add(this.senderControlPanel);
+            this.Controls.Add(this.baseWriterPanel);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainWindow";
@@ -128,7 +128,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel senderControlPanel;
+        private System.Windows.Forms.Panel baseWriterPanel;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataViewersToolStripMenuItem;

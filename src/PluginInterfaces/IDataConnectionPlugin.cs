@@ -1,6 +1,6 @@
 ﻿namespace F_RS232Client.Plugins
 {
-    public interface IDataConnectionPlugin : IPlugin
+    public interface IDataConnectionPlugin : IBasePlugin
     {
     }
 }

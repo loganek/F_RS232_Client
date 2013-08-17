@@ -18,7 +18,7 @@ namespace F_RS232Client.Plugins
         void Dispose();
     }
 
-    public interface IBasePlugin
+    public interface IBasePlugin : IPlugin
     {
         Control GetControl();
     }

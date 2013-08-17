@@ -1,4 +1,6 @@
-﻿namespace F_RS232Client.Plugins.Core
+﻿using System.Windows.Forms;
+
+namespace F_RS232Client.Plugins.Core
 {
     public class BaseConnection : IDataConnectionPlugin
     {
@@ -28,5 +30,15 @@
         {
         }
         #endregion
+
+        #region IBasePlugin implementation
+        
+        public Control GetControl()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #endregion
+
     }
 }

@@ -8,6 +8,15 @@ namespace F_RS232Client
     {
         private readonly ToolStripMenuItem baseMenuItem;
         private const int PositionOfUnknowPlugin = 2;
+
+        #region Base panels
+
+        private Control baseWriter;
+        private Control baseReader;
+        private readonly Control baseConnection;
+
+        #endregion
+
         #region constant menu items
         private ToolStripMenuItem connectionPlugins;
         private ToolStripMenuItem viewerPlugins;
@@ -18,8 +27,11 @@ namespace F_RS232Client
 
         private readonly PluginService pluginService = new PluginService();
 
-        public PluginMenuLoader(ToolStripMenuItem baseMenuItem)
+        public PluginMenuLoader(ToolStripMenuItem baseMenuItem, Control baseWriter, Control baseReader, Control baseConnection)
         {
+            this.baseWriter = baseWriter;
+            this.baseReader = baseReader;
+            this.baseConnection = baseConnection;
             this.baseMenuItem = baseMenuItem;
         }
 
@@ -79,6 +91,15 @@ namespace F_RS232Client
             {
                 ToolStripMenuItem item = InsertPluginToMenu(plugin);
                 IPlugin pluginCopy = plugin;
+
+                if (plugin is IBaseDataWriterPlugin)
+                    item.Click += (sender, args) =>
+                        {
+                            var baseDataWriterPlugin = pluginCopy as IBaseDataWriterPlugin;
+                            if (baseDataWriterPlugin != null)
+                                baseWriter.Controls.Add(baseDataWriterPlugin.GetControl());
+                        };
+
                 item.Click += (sender, e) => pluginCopy.Start();
             }
         }

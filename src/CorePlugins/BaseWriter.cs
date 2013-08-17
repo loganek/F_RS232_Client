@@ -1,4 +1,7 @@
-﻿namespace F_RS232Client.Plugins.Core
+﻿using System.Windows.Forms;
+using F_RS232Client.Plugins.Controls;
+
+namespace F_RS232Client.Plugins.Core
 {
     public class BaseWriter : IBaseDataWriterPlugin
     {
@@ -28,6 +31,15 @@
         public void Dispose()
         {
         }
+        #endregion
+
+        #region IBasePlugin implementation
+
+        public Control GetControl()
+        {
+            return new BaseWriterControl();
+        }
+
         #endregion
     }
 }
