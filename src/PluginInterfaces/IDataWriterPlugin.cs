@@ -4,7 +4,7 @@
     {
     }
 
-    public interface IBaseDataWriterPlugin : IDataWriterPlugin
+    public interface IBaseDataWriterPlugin : IDataWriterPlugin, IBasePlugin
     {
     }
 }

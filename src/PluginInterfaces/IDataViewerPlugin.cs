@@ -4,7 +4,7 @@
     {
     }
 
-    public interface IBaseDataViewerPlugin : IDataViewerPlugin
+    public interface IBaseDataViewerPlugin : IDataViewerPlugin, IBasePlugin
     {
     }
 

@@ -1,4 +1,6 @@
-﻿namespace F_RS232Client.Plugins
+﻿using System.Windows.Forms;
+
+namespace F_RS232Client.Plugins
 {
     public interface IPlugin
     {
@@ -14,6 +16,11 @@
         void Start();
         void Initialize();
         void Dispose();
+    }
+
+    public interface IBasePlugin
+    {
+        Control GetControl();
     }
 
     public interface IPluginHost

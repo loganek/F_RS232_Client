@@ -107,7 +107,6 @@ namespace F_RS232Client
                     break;
                 default:
                     return InsertUnknowPluginToMenu(plugin.Name);
-                    break;
             }
 
             return AddToMenu(plugin.Name, parent);
