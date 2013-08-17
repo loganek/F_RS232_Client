@@ -63,10 +63,17 @@
     <Compile Include="Controls\BaseWriterControl.Designer.cs">
       <DependentUpon>BaseWriterControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RS232ConnectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RS232ConnectionControl.Designer.cs">
+      <DependentUpon>RS232ConnectionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="IDataConnectionPlugin.cs" />
     <Compile Include="IDataViewerPlugin.cs" />
     <Compile Include="IDataWriterPlugin.cs" />
     <Compile Include="IPlugin.cs" />
+    <Compile Include="IWriteable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\BaseWriterControl.resx">
       <DependentUpon>BaseWriterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RS232ConnectionControl.resx">
+      <DependentUpon>RS232ConnectionControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

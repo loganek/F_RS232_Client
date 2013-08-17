@@ -117,7 +117,12 @@ namespace F_RS232Client
             }
 
             item.Click += (sender, args) =>
-                { if (parentControl != null) parentControl.Controls.Add(plugin.GetControl()); };
+                {
+                    if (parentControl == null) return;
+                    Control ctrl = plugin.GetControl();
+                    parentControl.Controls.Add(ctrl);
+                    ctrl.Dock = DockStyle.Fill;
+                };
         }
 
         private ToolStripMenuItem InsertPluginToMenu(IPlugin plugin)

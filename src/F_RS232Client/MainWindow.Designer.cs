@@ -37,14 +37,15 @@
             this.noneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // baseWriterPanel
             // 
-            this.baseWriterPanel.Location = new System.Drawing.Point(84, 39);
+            this.baseWriterPanel.Location = new System.Drawing.Point(362, 37);
             this.baseWriterPanel.Name = "baseWriterPanel";
-            this.baseWriterPanel.Size = new System.Drawing.Size(633, 282);
+            this.baseWriterPanel.Size = new System.Drawing.Size(324, 185);
             this.baseWriterPanel.TabIndex = 0;
             // 
             // mainMenuStrip
@@ -109,11 +110,19 @@
             this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
             // 
+            // connectionPanel
+            // 
+            this.connectionPanel.Location = new System.Drawing.Point(45, 50);
+            this.connectionPanel.Name = "connectionPanel";
+            this.connectionPanel.Size = new System.Drawing.Size(199, 128);
+            this.connectionPanel.TabIndex = 0;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 415);
+            this.Controls.Add(this.connectionPanel);
             this.Controls.Add(this.baseWriterPanel);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
@@ -137,6 +146,7 @@
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem reloadPluginsToolStripMenuItem;
+        private System.Windows.Forms.Panel connectionPanel;
     }
 }
 

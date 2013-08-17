@@ -1,9 +1,13 @@
 ﻿using System.Windows.Forms;
+using System.IO.Ports;
+using F_RS232Client.Plugins.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
     public class BaseConnection : IDataConnectionPlugin
     {
+        private SerialPort internalPort;
+
         public BaseConnection()
         {
             Name = "Core RS232 Connection";
@@ -35,10 +39,28 @@ namespace F_RS232Client.Plugins.Core
         
         public Control GetControl()
         {
-            throw new System.NotImplementedException();
+            return new RS232ConnectionControl();
         }
 
         #endregion
 
+        #region IWriteable implementation
+
+        public void Write(byte[] bytes)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Write(byte b)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Write(string str)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #endregion
     }
 }
