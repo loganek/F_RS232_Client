@@ -3,9 +3,4 @@
     public interface IDataViewerPlugin : IPlugin
     {
     }
-
-    public interface IBaseDataViewerPlugin : IDataViewerPlugin, IBasePlugin
-    {
-    }
-
 }

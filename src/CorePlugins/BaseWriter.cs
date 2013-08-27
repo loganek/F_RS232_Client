@@ -3,7 +3,7 @@ using F_RS232Client.Plugins.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
-    public class BaseWriter : IBaseDataWriterPlugin
+    public class BaseWriter : IDataWriterPlugin
     {
         public BaseWriter()
         {

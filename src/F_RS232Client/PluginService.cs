@@ -11,8 +11,6 @@ namespace F_RS232Client
         Connection,
         Viewer,
         Writer,
-        BaseViewer,
-        BaseWriter,
         Unknow
     }
 
@@ -84,12 +82,8 @@ namespace F_RS232Client
 
         public static PluginType GetPluginType(IPlugin plugin)
         {
-            if (plugin is IBaseDataViewerPlugin)
-                return PluginType.BaseViewer;
             if(plugin is IDataViewerPlugin)
                 return PluginType.Viewer;
-            if(plugin is IBaseDataWriterPlugin)
-                return PluginType.BaseWriter;
             if(plugin is IDataWriterPlugin)
                 return PluginType.Writer;
             if(plugin is IDataConnectionPlugin)

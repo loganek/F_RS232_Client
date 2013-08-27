@@ -21,8 +21,6 @@ namespace F_RS232Client
         private ToolStripMenuItem connectionPlugins;
         private ToolStripMenuItem viewerPlugins;
         private ToolStripMenuItem writerPlugins;
-        private ToolStripMenuItem baseViewerPlugins;
-        private ToolStripMenuItem baseWriterPlugins;
         #endregion
 
         private readonly PluginService pluginService = new PluginService();
@@ -48,10 +46,10 @@ namespace F_RS232Client
         {
             const string none = "(none)";
 
-            if (baseWriterPlugins.DropDownItems.Count == 0)
-                AddToMenu(none, baseWriterPlugins).Enabled = false;
-            if (baseViewerPlugins.DropDownItems.Count == 0)
-                AddToMenu(none, baseViewerPlugins).Enabled = false;
+            if (writerPlugins.DropDownItems.Count == 0)
+                AddToMenu(none, writerPlugins).Enabled = false;
+            if (viewerPlugins.DropDownItems.Count == 0)
+                AddToMenu(none, viewerPlugins).Enabled = false;
             if (connectionPlugins.DropDownItems.Count == 0)
                 AddToMenu(none, connectionPlugins).Enabled = false;
         }
@@ -61,8 +59,6 @@ namespace F_RS232Client
             connectionPlugins = AddToMenu("Connection Plugins");
             viewerPlugins = AddToMenu("Viewer Plugins");
             writerPlugins = AddToMenu("Writer Plugins");
-            baseViewerPlugins = AddToMenu("Base Viewer Plugins", viewerPlugins);
-            baseWriterPlugins = AddToMenu("Base Writer Plugins", writerPlugins);
             baseMenuItem.DropDownItems.Add(new ToolStripSeparator());
             AddToMenu("Reload plugins").Click += (sender, args) => LoadMenu();
         }
@@ -105,10 +101,10 @@ namespace F_RS232Client
 
             switch (PluginService.GetPluginType(plugin))
             {
-                case PluginType.BaseViewer:
+                case PluginType.Viewer:
                     parentControl = baseViewer;
                     break;
-                case PluginType.BaseWriter:
+                case PluginType.Writer:
                     parentControl = baseWriter;
                     break;
                 case PluginType.Connection:
@@ -132,12 +128,6 @@ namespace F_RS232Client
 
             switch (type)
             {
-                case PluginType.BaseViewer:
-                    parent = baseViewerPlugins;
-                    break;
-                case PluginType.BaseWriter:
-                    parent = baseWriterPlugins;
-                    break;
                 case PluginType.Connection:
                     parent = connectionPlugins;
                     break;

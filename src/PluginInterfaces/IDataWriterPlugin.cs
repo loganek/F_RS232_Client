@@ -3,8 +3,4 @@
     public interface IDataWriterPlugin : IPlugin
     {
     }
-
-    public interface IBaseDataWriterPlugin : IDataWriterPlugin, IBasePlugin
-    {
-    }
 }
