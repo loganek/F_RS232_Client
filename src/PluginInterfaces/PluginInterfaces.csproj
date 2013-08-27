@@ -48,7 +48,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,18 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BaseWriterControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\BaseWriterControl.Designer.cs">
-      <DependentUpon>BaseWriterControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RS232ConnectionControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\RS232ConnectionControl.Designer.cs">
-      <DependentUpon>RS232ConnectionControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="IDataConnectionPlugin.cs" />
     <Compile Include="IDataViewerPlugin.cs" />
     <Compile Include="IDataWriterPlugin.cs" />
@@ -97,14 +84,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controls\BaseWriterControl.resx">
-      <DependentUpon>BaseWriterControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\RS232ConnectionControl.resx">
-      <DependentUpon>RS232ConnectionControl.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
