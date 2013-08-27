@@ -1,4 +1,4 @@
-﻿namespace F_RS232Client.Plugins.Controls
+﻿namespace F_RS232Client.Plugins.Core.Controls
 {
     partial class BaseWriterControl
     {

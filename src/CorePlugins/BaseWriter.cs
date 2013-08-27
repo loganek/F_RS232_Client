@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using F_RS232Client.Plugins.Controls;
+using F_RS232Client.Plugins.Core.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {

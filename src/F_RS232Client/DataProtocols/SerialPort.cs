@@ -1,4 +1,6 @@
-﻿namespace F_RS232Client.DataProtocols
+﻿using F_RS232Client.Plugins;
+
+namespace F_RS232Client.DataProtocols
 {
     public class SerialPort : DataProtocol, IWriteable
     {

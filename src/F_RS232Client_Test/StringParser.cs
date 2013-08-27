@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace F_RS232Client_Test
@@ -24,8 +21,8 @@ namespace F_RS232Client_Test
         [TestMethod]
         public void ExpectedValidConvertByteArray()
         {
-            byte[] input = new byte[] {0, 2, 25, 30, 31, 32, 49, 68, 96, 125, 126, 127, 200, 230, 255 };
-            string expected="\\x00\\x02\\x19\\x1E\\x1F 1D`}~\\x7F\\xC8\\xE6\\xFF";
+            var input = new byte[] {0, 2, 25, 30, 31, 32, 49, 68, 96, 125, 126, 127, 200, 230, 255 };
+            const string expected = "\\x00\\x02\\x19\\x1E\\x1F 1D`}~\\x7F\\xC8\\xE6\\xFF";
 
             Assert.AreEqual(expected, new F_RS232Client.BytesToStrConverter(input).GetString());
         }
@@ -45,8 +42,8 @@ namespace F_RS232Client_Test
         [TestMethod]
         public void ExpectedValidConvertStringToByteArray()
         {
-            string input = @"This\nis\rSPARTA!\\and test other \0 special signs";
-            byte[] expected = new byte[] { 84, 104, 105, 115, 10, 105, 115, 13, 83, 
+            const string input = @"This\nis\rSPARTA!\\and test other \0 special signs";
+            var expected = new byte[] { 84, 104, 105, 115, 10, 105, 115, 13, 83, 
                 80, 65, 82, 84, 65, 33, 92, 97, 110, 100, 32, 116, 101, 115, 116,
                 32, 111, 116, 104, 101, 114, 32, 19, 32, 115, 112, 101, 99, 105, 
                 97, 108, 32, 115, 105, 103, 110, 115};
@@ -62,7 +59,7 @@ namespace F_RS232Client_Test
         [TestMethod]
         public void ShouldThrowExceptionBecauseOfWrongInputFormat()
         {
-            string input = @"This is invalid format\";
+            const string input = @"This is invalid format\";
 
             try
             {
@@ -77,8 +74,8 @@ namespace F_RS232Client_Test
         [TestMethod]
         public void ShouldCorrectParseDifferentFormats()
         {
-            string input = @"A\x44B\d102\d123";
-            byte[] expected = new byte[] { 65, 0x44, 66, 102, 123 };
+            const string input = @"A\x44B\d102\d123";
+            var expected = new byte[] { 65, 0x44, 66, 102, 123 };
 
             byte[] output = new F_RS232Client.StrToBytesConverter(input).GetBytes();
 
