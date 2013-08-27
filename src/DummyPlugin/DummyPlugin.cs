@@ -1,4 +1,5 @@
-﻿using F_RS232Client.Plugins;
+﻿using System.Windows.Forms;
+using F_RS232Client.Plugins;
 
 namespace DummyPlugin
 {
@@ -29,8 +30,17 @@ namespace DummyPlugin
 
         public void Start()
         {
-            System.Windows.Forms.MessageBox.Show("Hello World");
+            MessageBox.Show("Hello World");
         }
+
+        public Control GetControl()
+        {
+            return new Label
+                {
+                    Text = "This is dummy plugin"
+                };
+        }
+
         #endregion
     }
 }

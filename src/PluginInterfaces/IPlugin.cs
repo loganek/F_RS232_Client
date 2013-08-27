@@ -13,14 +13,10 @@ namespace F_RS232Client.Plugins
         string Version { get; }
         #endregion
 
+        Control GetControl();
         void Start();
         void Initialize();
         void Dispose();
-    }
-
-    public interface IBasePlugin : IPlugin
-    {
-        Control GetControl();
     }
 
     public interface IPluginHost

@@ -88,14 +88,13 @@ namespace F_RS232Client
                 ToolStripMenuItem item = InsertPluginToMenu(plugin);
                 IPlugin pluginCopy = plugin;
 
-                if (plugin is IBasePlugin)
-                    AppendClickMethodToBasePlugin(item, plugin as IBasePlugin);
+                AppendClickMethodToBasePlugin(item, plugin);
 
                 item.Click += (sender, e) => pluginCopy.Start();
             }
         }
 
-        private void AppendClickMethodToBasePlugin(ToolStripMenuItem item, IBasePlugin plugin)
+        private void AppendClickMethodToBasePlugin(ToolStripItem item, IPlugin plugin)
         {
             Control parentControl = null;
 
