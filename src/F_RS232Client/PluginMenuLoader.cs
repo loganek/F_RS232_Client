@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using F_RS232Client.Plugins;
 
@@ -8,6 +9,7 @@ namespace F_RS232Client
     {
         private readonly ToolStripMenuItem baseMenuItem;
         private const int PositionOfUnknowPlugin = 2;
+        private PluginManager manager = new PluginManager();
 
         #region Base panels
 
@@ -88,36 +90,55 @@ namespace F_RS232Client
                 ToolStripMenuItem item = InsertPluginToMenu(plugin);
                 IPlugin pluginCopy = plugin;
 
-                AppendClickMethodToBasePlugin(item, plugin);
-
-                item.Click += (sender, e) => pluginCopy.Start();
+                item.Click += (sender, e) =>
+                    {
+                        if (manager.HasPlugin(pluginCopy))
+                        {
+                            manager.RemovePlugin(pluginCopy);
+                            RemovePluginParent(pluginCopy);
+                            item.Checked = false;
+                        }
+                        else
+                        {
+                            manager.AddPlugin(pluginCopy);
+                            SetPluginParent(pluginCopy);
+                            item.Checked = true;
+                        }
+                    };
             }
         }
 
-        private void AppendClickMethodToBasePlugin(ToolStripItem item, IPlugin plugin)
+        private void RemovePluginParent(IPlugin plugin)
         {
-            Control parentControl = null;
+            Control parentControl = GetPluginParent(plugin);
 
+            if (parentControl == null) return;
+            parentControl.Controls.Clear();
+        }
+
+        private void SetPluginParent(IPlugin plugin)
+        {
+            Control parentControl = GetPluginParent(plugin);
+
+            if (parentControl == null) return;
+            Control ctrl = plugin.GetControl();
+            parentControl.Controls.Add(ctrl);
+            ctrl.Dock = DockStyle.Fill;
+        }
+
+        private Control GetPluginParent(IPlugin plugin)
+        {
             switch (PluginService.GetPluginType(plugin))
             {
                 case PluginType.Viewer:
-                    parentControl = baseViewer;
-                    break;
+                    return baseViewer;
                 case PluginType.Writer:
-                    parentControl = baseWriter;
-                    break;
+                    return baseWriter;
                 case PluginType.Connection:
-                    parentControl = baseConnection;
-                    break;
+                    return baseConnection;
             }
 
-            item.Click += (sender, args) =>
-                {
-                    if (parentControl == null) return;
-                    Control ctrl = plugin.GetControl();
-                    parentControl.Controls.Add(ctrl);
-                    ctrl.Dock = DockStyle.Fill;
-                };
+            throw new Exception("Unknow plugin parent");
         }
 
         private ToolStripMenuItem InsertPluginToMenu(IPlugin plugin)

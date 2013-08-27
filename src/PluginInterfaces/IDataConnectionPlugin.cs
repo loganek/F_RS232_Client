@@ -1,6 +1,6 @@
 ﻿namespace F_RS232Client.Plugins
 {
-    public interface IDataConnectionPlugin : IWriteable
+    public interface IDataConnectionPlugin : IWriteable, IPlugin
     {
     }
 }

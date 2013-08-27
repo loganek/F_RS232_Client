@@ -69,6 +69,7 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PluginManager.cs" />
     <Compile Include="PluginMenuLoader.cs" />
     <Compile Include="PluginService.cs" />
     <Compile Include="Program.cs" />
