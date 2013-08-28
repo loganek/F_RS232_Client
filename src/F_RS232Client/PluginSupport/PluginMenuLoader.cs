@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using F_RS232Client.Plugins;
 
-namespace F_RS232Client
+namespace F_RS232Client.PluginSupport
 {
     class PluginMenuLoader
     {
