@@ -30,6 +30,7 @@
         {
             this.availablePortsComboBox = new System.Windows.Forms.ComboBox();
             this.rescanPortsButton = new System.Windows.Forms.Button();
+            this.connectButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // availablePortsComboBox
@@ -52,10 +53,21 @@
             this.rescanPortsButton.Text = "Rescan";
             this.rescanPortsButton.UseVisualStyleBackColor = true;
             // 
+            // connectButton
+            // 
+            this.connectButton.Location = new System.Drawing.Point(3, 30);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(75, 23);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
+            // 
             // RS232ConnectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.connectButton);
             this.Controls.Add(this.rescanPortsButton);
             this.Controls.Add(this.availablePortsComboBox);
             this.Name = "RS232ConnectionControl";
@@ -68,5 +80,6 @@
 
         private System.Windows.Forms.ComboBox availablePortsComboBox;
         private System.Windows.Forms.Button rescanPortsButton;
+        private System.Windows.Forms.Button connectButton;
     }
 }
