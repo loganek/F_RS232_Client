@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseConnection.cs" />
+    <Compile Include="RS232Connection.cs" />
     <Compile Include="BaseWriter.cs" />
     <Compile Include="Controls\BaseWriterControl.cs">
       <SubType>UserControl</SubType>

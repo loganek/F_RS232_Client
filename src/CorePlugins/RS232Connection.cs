@@ -5,7 +5,7 @@ using F_RS232Client.Plugins.Core.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
-    public class BaseConnection : IDataConnectionPlugin
+    public class RS232Connection : IDataConnectionPlugin
     {
         private SerialPort internalPort = new SerialPort();
         readonly RS232ConnectionControl control = new RS232ConnectionControl();
@@ -20,7 +20,7 @@ namespace F_RS232Client.Plugins.Core
                 e(this, args);
         }
 
-        public BaseConnection()
+        public RS232Connection()
         {
             control.PortOpen += (sender, args) => OpenPort();
             control.PortClose += (sender, args) => ClosePort();
