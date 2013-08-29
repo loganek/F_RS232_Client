@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.availablePortsComboBox = new System.Windows.Forms.ComboBox();
             this.rescanPortsButton = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
@@ -40,6 +41,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataReceivedIndicatorButton = new System.Windows.Forms.Button();
+            this.dataReceivedIndicatorTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // availablePortsComboBox
@@ -69,9 +72,9 @@
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.connectButton.Location = new System.Drawing.Point(7, 142);
+            this.connectButton.Location = new System.Drawing.Point(46, 142);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(210, 35);
+            this.connectButton.Size = new System.Drawing.Size(171, 35);
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -192,10 +195,25 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Port name:";
             // 
+            // dataReceivedIndicatorButton
+            // 
+            this.dataReceivedIndicatorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataReceivedIndicatorButton.Location = new System.Drawing.Point(7, 142);
+            this.dataReceivedIndicatorButton.Name = "dataReceivedIndicatorButton";
+            this.dataReceivedIndicatorButton.Size = new System.Drawing.Size(33, 35);
+            this.dataReceivedIndicatorButton.TabIndex = 12;
+            this.dataReceivedIndicatorButton.UseVisualStyleBackColor = true;
+            // 
+            // dataReceivedIndicatorTimer
+            // 
+            this.dataReceivedIndicatorTimer.Tick += new System.EventHandler(this.dataReceivedIndicatorTimer_Tick);
+            // 
             // RS232ConnectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dataReceivedIndicatorButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -229,5 +247,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button dataReceivedIndicatorButton;
+        private System.Windows.Forms.Timer dataReceivedIndicatorTimer;
     }
 }

@@ -24,9 +24,8 @@ namespace F_RS232Client.Plugins.Core
         {
             control.PortOpen += (sender, args) => OpenPort();
             control.PortClose += (sender, args) => ClosePort();
+            ReceiveNewData += control.DataReceived;
             ChangeConnectionState += (sender, args) => control.SetConnectionState(args.IsOpen);
-
-            internalPort.DataReceived += InternalPortDataReceived;
 
             Name = "Core RS232 Connection";
             Description = "Makes a connection via RS232";
@@ -92,6 +91,7 @@ namespace F_RS232Client.Plugins.Core
                 return;
 
             CreateSerialPortFromControl();
+            internalPort.DataReceived += InternalPortDataReceived;
             internalPort.Open();
             OnDoEvent(ChangeConnectionState, new ChangeStateEventArgs(true));
         }
@@ -112,7 +112,7 @@ namespace F_RS232Client.Plugins.Core
             
             var buffer = new byte[count];
 
-            if (!internalPort.IsOpen)
+            if (internalPort.IsOpen)
             {
                 internalPort.Read(buffer, 0, count);
                 OnDoEvent(ReceiveNewData, new NewDataEventArgs(buffer));
@@ -129,6 +129,7 @@ namespace F_RS232Client.Plugins.Core
             new System.Threading.Thread(() =>
                 {
                     internalPort.Close();
+                    internalPort.DataReceived -= InternalPortDataReceived;
                     OnDoEvent(ChangeConnectionState, new ChangeStateEventArgs(false));
                 }).Start();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
 
@@ -70,6 +71,12 @@ namespace F_RS232Client.Plugins.Core.Controls
                                     connectButton.Text = connectionState ? "Disconnect" : "Connect");
         }
 
+        public void DataReceived(object sender, NewDataEventArgs e)
+        {
+            dataReceivedIndicatorButton.BackColor = Color.Green;
+            dataReceivedIndicatorTimer.Start();
+        }
+
         private void InitComponentValues()
         {
             ScanPorts();
@@ -108,6 +115,12 @@ namespace F_RS232Client.Plugins.Core.Controls
         private void rescanPortsButton_Click(object sender, EventArgs e)
         {
             ScanPorts();
+        }
+
+        private void dataReceivedIndicatorTimer_Tick(object sender, EventArgs e)
+        {
+            dataReceivedIndicatorButton.BackColor = SystemColors.Control;
+            dataReceivedIndicatorTimer.Enabled = false;
         }
     }
 }
