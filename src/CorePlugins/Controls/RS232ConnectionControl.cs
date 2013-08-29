@@ -6,12 +6,13 @@ namespace F_RS232Client.Plugins.Core.Controls
 {
     public partial class RS232ConnectionControl : UserControl
     {
-        private bool connectionState = false;
+        private bool connectionState;
 
         public RS232ConnectionControl()
         {
             InitializeComponent();
-            availablePortsComboBox.DataSource = SerialPort.GetPortNames();
+
+            InitComponentValues();
         }
 
         public event EventHandler PortOpen;
@@ -34,22 +35,30 @@ namespace F_RS232Client.Plugins.Core.Controls
 
         public int BaudRate
         {
-            get { return 9600; }
+            get { return Convert.ToInt32(baudRateComboBox.Text); }
         }
 
         public Parity Parity
         {
-            get { return Parity.None; }
+            get
+            {
+                var parities = new[] {Parity.None, Parity.Odd, Parity.Even, Parity.Mark, Parity.Space};
+                return parities[parityComboBox.SelectedIndex];
+            }
         }
 
         public int DataBits
         {
-            get { return 8; }
+            get { return Convert.ToInt32(dataBitsComboBox.Text); }
         }
 
         public StopBits StopBits
         {
-            get { return StopBits.One; }
+            get
+            {
+                var stopBits = new[] {StopBits.None, StopBits.One, StopBits.OnePointFive, StopBits.Two};
+                return stopBits[stopBitsComboBox.SelectedIndex];
+            }
         }
 
         #endregion
@@ -59,6 +68,28 @@ namespace F_RS232Client.Plugins.Core.Controls
             connectionState = state;
             DoInvoke(connectButton, () =>
                                     connectButton.Text = connectionState ? "Disconnect" : "Connect");
+        }
+
+        private void InitComponentValues()
+        {
+            ScanPorts();
+
+            parityComboBox.SelectedIndex = 0;
+            dataBitsComboBox.SelectedIndex = 1;
+            stopBitsComboBox.SelectedIndex = 0;
+        }
+
+        private void ScanPorts()
+        {
+            availablePortsComboBox.DataSource = SerialPort.GetPortNames();
+
+            if (availablePortsComboBox.Items.Count > 0)
+            {
+                availablePortsComboBox.SelectedIndex = 0;
+                connectButton.Enabled = true;
+            }
+            else
+                connectButton.Enabled = false | connectionState;
         }
 
         private void DoInvoke(Control control, Action action)
@@ -72,6 +103,11 @@ namespace F_RS232Client.Plugins.Core.Controls
         private void connectButton_Click(object sender, EventArgs e)
         {
             OnDoEvent(connectionState ? PortClose : PortOpen);
+        }
+
+        private void rescanPortsButton_Click(object sender, EventArgs e)
+        {
+            ScanPorts();
         }
     }
 }
