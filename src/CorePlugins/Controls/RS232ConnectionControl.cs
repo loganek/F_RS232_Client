@@ -15,8 +15,8 @@ namespace F_RS232Client.Plugins.Core.Controls
             InitComponentValues();
         }
 
-        public event EventHandler PortOpen;
-        public event EventHandler PortClose;
+        internal event EventHandler PortOpen;
+        internal event EventHandler PortClose;
 
         protected virtual void OnDoEvent(EventHandler e, EventArgs args = null)
         {

@@ -12,7 +12,6 @@ namespace F_RS232Client.Plugins.Core
 
         public event EventHandler<ChangeStateEventArgs> ChangeConnectionState;
 
-
         protected virtual void OnDoEvent<T>(EventHandler<T> e, T args)
             where T : EventArgs
         {
@@ -120,15 +119,5 @@ namespace F_RS232Client.Plugins.Core
             if (!internalPort.IsOpen)
                 throw new Exception("Cannot send data: port is closed");
         }
-    }
-
-    public class ChangeStateEventArgs : EventArgs
-    {
-        public ChangeStateEventArgs(bool isOpen)
-        {
-            IsOpen = isOpen;
-        }
-
-        public bool IsOpen { get; private set; }
     }
 }
