@@ -76,7 +76,7 @@ namespace F_RS232Client.Plugins.Core.Controls
 
             parityComboBox.SelectedIndex = 0;
             dataBitsComboBox.SelectedIndex = 1;
-            stopBitsComboBox.SelectedIndex = 0;
+            stopBitsComboBox.SelectedIndex = 1;
         }
 
         private void ScanPorts()
