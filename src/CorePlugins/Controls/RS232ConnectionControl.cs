@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO.Ports;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace F_RS232Client.Plugins.Core.Controls
@@ -8,6 +9,7 @@ namespace F_RS232Client.Plugins.Core.Controls
     public partial class RS232ConnectionControl : UserControl
     {
         private bool connectionState;
+        private int rxIndicateCounter;
 
         public RS232ConnectionControl()
         {
@@ -74,7 +76,18 @@ namespace F_RS232Client.Plugins.Core.Controls
         public void DataReceived(object sender, NewDataEventArgs e)
         {
             dataReceivedIndicatorButton.BackColor = Color.Green;
-            dataReceivedIndicatorTimer.Start();
+            Interlocked.Increment(ref rxIndicateCounter);
+            new Thread(() =>
+                {
+                    Thread.Sleep(1000);
+                    DoInvoke(dataReceivedIndicatorButton, () =>
+                        {
+                            Interlocked.Decrement(ref rxIndicateCounter);
+
+                            if (rxIndicateCounter == 0)
+                                dataReceivedIndicatorButton.BackColor = SystemColors.Control;
+                        });
+                }).Start();
         }
 
         private void InitComponentValues()
@@ -115,12 +128,6 @@ namespace F_RS232Client.Plugins.Core.Controls
         private void rescanPortsButton_Click(object sender, EventArgs e)
         {
             ScanPorts();
-        }
-
-        private void dataReceivedIndicatorTimer_Tick(object sender, EventArgs e)
-        {
-            dataReceivedIndicatorButton.BackColor = SystemColors.Control;
-            dataReceivedIndicatorTimer.Enabled = false;
         }
     }
 }

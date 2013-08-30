@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.availablePortsComboBox = new System.Windows.Forms.ComboBox();
             this.rescanPortsButton = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
@@ -42,7 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataReceivedIndicatorButton = new System.Windows.Forms.Button();
-            this.dataReceivedIndicatorTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // availablePortsComboBox
@@ -205,10 +203,6 @@
             this.dataReceivedIndicatorButton.TabIndex = 12;
             this.dataReceivedIndicatorButton.UseVisualStyleBackColor = true;
             // 
-            // dataReceivedIndicatorTimer
-            // 
-            this.dataReceivedIndicatorTimer.Tick += new System.EventHandler(this.dataReceivedIndicatorTimer_Tick);
-            // 
             // RS232ConnectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,6 +242,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button dataReceivedIndicatorButton;
-        private System.Windows.Forms.Timer dataReceivedIndicatorTimer;
     }
 }
