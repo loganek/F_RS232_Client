@@ -8,8 +8,14 @@ namespace F_RS232Client.Plugins.Core.Controls
 {
     public partial class RS232ConnectionControl : UserControl
     {
+        private class IntWrapper
+        {
+            internal int Value;
+        }
+
         private bool connectionState;
-        private int rxIndicateCounter;
+        private readonly IntWrapper rxIndicatorCounter = new IntWrapper();
+        private readonly IntWrapper txIndicatorCounter = new IntWrapper();
 
         public RS232ConnectionControl()
         {
@@ -75,19 +81,29 @@ namespace F_RS232Client.Plugins.Core.Controls
 
         public void DataReceived(object sender, NewDataEventArgs e)
         {
-            dataReceivedIndicatorButton.BackColor = Color.Green;
-            Interlocked.Increment(ref rxIndicateCounter);
-            new Thread(() =>
-                {
-                    Thread.Sleep(1000);
-                    DoInvoke(dataReceivedIndicatorButton, () =>
-                        {
-                            Interlocked.Decrement(ref rxIndicateCounter);
+            IndicatorWorker(rxIndicatorPanel, rxIndicatorCounter);
+        }
 
-                            if (rxIndicateCounter == 0)
-                                dataReceivedIndicatorButton.BackColor = SystemColors.Control;
-                        });
-                }).Start();
+        public void DataSent(object sender, EventArgs e)
+        {
+            IndicatorWorker(txIndicatorPanel, txIndicatorCounter);
+        }
+
+        private void IndicatorWorker(Control indicatorPanel, IntWrapper indicatorCounter)
+        {
+            indicatorPanel.BackColor = Color.Green;
+            Interlocked.Increment(ref indicatorCounter.Value);
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                DoInvoke(indicatorPanel, () =>
+                {
+                    Interlocked.Decrement(ref indicatorCounter.Value);
+
+                    if (indicatorCounter.Value == 0)
+                        indicatorPanel.BackColor = SystemColors.Control;
+                });
+            }).Start();
         }
 
         private void InitComponentValues()
