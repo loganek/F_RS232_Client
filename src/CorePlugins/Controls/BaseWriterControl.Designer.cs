@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.sentDataRichTextBox = new System.Windows.Forms.RichTextBox();
             this.startStopCSButton = new System.Windows.Forms.Button();
             this.octDMRadioButton = new System.Windows.Forms.RadioButton();
@@ -42,6 +43,7 @@
             this.displayModeGroupBox = new System.Windows.Forms.GroupBox();
             this.dataToSendTextBox = new System.Windows.Forms.TextBox();
             this.clearAfterSendingCheckBox = new System.Windows.Forms.CheckBox();
+            this.circularSendingTimer = new System.Windows.Forms.Timer(this.components);
             this.circularSendingGroupBox.SuspendLayout();
             this.displayModeGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +68,7 @@
             this.startStopCSButton.TabIndex = 2;
             this.startStopCSButton.Text = "Start";
             this.startStopCSButton.UseVisualStyleBackColor = true;
+            this.startStopCSButton.Click += new System.EventHandler(this.startStopCSButton_Click);
             // 
             // octDMRadioButton
             // 
@@ -196,6 +199,10 @@
             this.clearAfterSendingCheckBox.Text = "Clear textbox\r\nafter sending";
             this.clearAfterSendingCheckBox.UseVisualStyleBackColor = true;
             // 
+            // circularSendingTimer
+            // 
+            this.circularSendingTimer.Tick += new System.EventHandler(this.circularSendingTimer_Tick);
+            // 
             // BaseWriterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,5 +241,6 @@
         private System.Windows.Forms.GroupBox displayModeGroupBox;
         private System.Windows.Forms.TextBox dataToSendTextBox;
         private System.Windows.Forms.CheckBox clearAfterSendingCheckBox;
+        private System.Windows.Forms.Timer circularSendingTimer;
     }
 }

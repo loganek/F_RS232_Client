@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace F_RS232Client.Plugins.Core.Controls
 {
@@ -13,24 +14,24 @@ namespace F_RS232Client.Plugins.Core.Controls
             this.writer = writer;
         }
 
-        private void sendButton_Click(object sender, System.EventArgs e)
+        private void sendButton_Click(object sender, EventArgs e)
         {
-            Send();
+            AppendToRichTextBox(Send());
+            ClearTextBox();
         }
 
-        private void Send()
+        private string Send()
         {
             var strConverter = new StrToBytesConverter(dataToSendTextBox.Text);
             var byteConverter = new BytesToStrConverter(strConverter.GetBytes(), GetSelectedDisplayMode());
             writer.Write(strConverter.GetBytes());
-
-            AppendToRichTextBox(byteConverter);
-            ClearTextBox();
+            
+            return byteConverter.GetString();
         }
 
-        private void AppendToRichTextBox(BytesToStrConverter byteConverter)
+        private void AppendToRichTextBox(string sentString)
         {
-            sentDataRichTextBox.AppendText(byteConverter.GetString());
+            sentDataRichTextBox.AppendText(sentString);
             sentDataRichTextBox.SelectionStart = sentDataRichTextBox.Text.Length;
             sentDataRichTextBox.ScrollToCaret();
         }
@@ -55,8 +56,33 @@ namespace F_RS232Client.Plugins.Core.Controls
         {
             if (e.KeyChar == (char)13)
             {
-                Send();
+                AppendToRichTextBox(Send());
+                ClearTextBox();
             }
+        }
+
+        private void startStopCSButton_Click(object sender, EventArgs e)
+        {
+            if (circularSendingTimer.Enabled)
+            {
+                startStopCSButton.Text = "Start";
+                circularSendingTimer.Stop();
+                dataToSendTextBox.Enabled = true;
+                sendButton.Enabled = true;
+            }
+            else
+            {
+                circularSendingTimer.Interval = Convert.ToInt32(intervalCSTextBox.Text);
+                circularSendingTimer.Start();
+                startStopCSButton.Text = "Stop";
+                dataToSendTextBox.Enabled = false;
+                sendButton.Enabled = false;
+            }
+        }
+
+        private void circularSendingTimer_Tick(object sender, EventArgs e)
+        {
+            AppendToRichTextBox(Send());
         }
     }
 }
