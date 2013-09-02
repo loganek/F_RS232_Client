@@ -4,13 +4,13 @@ using F_RS232Client.Plugins.Core.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
-    public class BaseWriter : IDataWriterPlugin
+    public class CoreWriter : IDataWriterPlugin
     {
-        private readonly BaseWriterControl control;
+        private readonly CoreWriterControl control;
 
-        public BaseWriter()
+        public CoreWriter()
         {
-            control = new BaseWriterControl(this);
+            control = new CoreWriterControl(this);
             Name = "Core Base Writer";
             Description = "Writes data to an element";
             Author = "Marcin Kolny <marcin.kolny@gmail.com>";

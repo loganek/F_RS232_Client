@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace F_RS232Client.Plugins.Core.Controls
 {
-    public partial class BaseViewerControl : UserControl
+    public partial class CoreViewerControl : UserControl
     {
-        public BaseViewerControl()
+        public CoreViewerControl()
         {
             InitializeComponent();
         }

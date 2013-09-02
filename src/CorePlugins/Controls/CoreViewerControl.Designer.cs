@@ -1,6 +1,6 @@
 ﻿namespace F_RS232Client.Plugins.Core.Controls
 {
-    partial class BaseViewerControl
+    partial class CoreViewerControl
     {
         /// <summary> 
         /// Required designer variable.

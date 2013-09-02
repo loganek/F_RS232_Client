@@ -3,11 +3,11 @@ using F_RS232Client.Plugins.Core.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
-    public class BaseViewer : IDataViewerPlugin
+    public class CoreViewer : IDataViewerPlugin
     {
-        readonly BaseViewerControl control = new BaseViewerControl();
+        readonly CoreViewerControl control = new CoreViewerControl();
 
-        public BaseViewer()
+        public CoreViewer()
         {
             Name = "Core Base Viewer";
             Description = "Shows data on an element";

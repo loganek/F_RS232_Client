@@ -57,12 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseViewer.cs" />
-    <Compile Include="Controls\BaseViewerControl.cs">
+    <Compile Include="CoreViewer.cs" />
+    <Compile Include="Controls\CoreViewerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BaseViewerControl.Designer.cs">
-      <DependentUpon>BaseViewerControl.cs</DependentUpon>
+    <Compile Include="Controls\CoreViewerControl.Designer.cs">
+      <DependentUpon>CoreViewerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -70,12 +70,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RS232Connection.cs" />
-    <Compile Include="BaseWriter.cs" />
-    <Compile Include="Controls\BaseWriterControl.cs">
+    <Compile Include="CoreWriter.cs" />
+    <Compile Include="Controls\CoreWriterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BaseWriterControl.Designer.cs">
-      <DependentUpon>BaseWriterControl.cs</DependentUpon>
+    <Compile Include="Controls\CoreWriterControl.Designer.cs">
+      <DependentUpon>CoreWriterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\RS232ConnectionControl.cs">
       <SubType>UserControl</SubType>
@@ -116,11 +116,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\BaseViewerControl.resx">
-      <DependentUpon>BaseViewerControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CoreViewerControl.resx">
+      <DependentUpon>CoreViewerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BaseWriterControl.resx">
-      <DependentUpon>BaseWriterControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CoreWriterControl.resx">
+      <DependentUpon>CoreWriterControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RS232ConnectionControl.resx">
       <DependentUpon>RS232ConnectionControl.cs</DependentUpon>

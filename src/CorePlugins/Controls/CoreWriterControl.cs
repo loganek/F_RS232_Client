@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace F_RS232Client.Plugins.Core.Controls
 {
-    public partial class BaseWriterControl : UserControl
+    public partial class CoreWriterControl : UserControl
     {
-        private readonly BaseWriter writer;
+        private readonly CoreWriter writer;
 
-        public BaseWriterControl(BaseWriter writer)
+        public CoreWriterControl(CoreWriter writer)
         {
             InitializeComponent();
 

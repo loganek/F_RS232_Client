@@ -1,6 +1,6 @@
 ﻿namespace F_RS232Client.Plugins.Core.Controls
 {
-    partial class BaseWriterControl
+    partial class CoreWriterControl
     {
         /// <summary> 
         /// Required designer variable.
