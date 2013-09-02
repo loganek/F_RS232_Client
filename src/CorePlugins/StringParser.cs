@@ -72,6 +72,8 @@ namespace F_RS232Client.Plugins.Core
                     return ConvertHex();
                 case 'd':
                     return ConvertDecimal();
+                case 'o':
+                    return ConvertOctal();
                 default:
                     return ConvertSpecialCharacter();
             }
@@ -96,6 +98,20 @@ namespace F_RS232Client.Plugins.Core
 
             currPos += 4;
             return Convert.ToByte(str.Substring(currPos - 2, 3));
+        }
+
+        private byte ConvertOctal()
+        {
+            if (currPos + 4 >= str.Length)
+                throw new Exception("Cannot parse string");
+
+            currPos += 4;
+
+            string value = str.Substring(currPos - 2, 3);
+
+            return (byte) ((int.Parse(value.Substring(0, 1)) << 6) | 
+                (int.Parse(value.Substring(1, 1)) << 3) | 
+                int.Parse(value.Substring(2, 1)));
         }
 
         public byte ConvertSpecialCharacter()

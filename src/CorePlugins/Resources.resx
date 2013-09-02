@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="textBoxErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>282, 17</value>
-  </metadata>
-  <metadata name="helpToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>173, 17</value>
-  </metadata>
-  <metadata name="circularSendingTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="helpText" xml:space="preserve">
+    <value>To send hex value, use: \xZZ where ZZ is a hex number
+To send decimal value, use: \dZZZ where ZZZ is a decimal number
+To send octal value, use: \oZZZ where ZZZ is an octanl number
+You can also use special characters: \n - new line, \r - carriage return, \\ - single \</value>
+  </data>
 </root>

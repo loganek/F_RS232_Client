@@ -44,8 +44,11 @@
             this.dataToSendTextBox = new System.Windows.Forms.TextBox();
             this.clearAfterSendingCheckBox = new System.Windows.Forms.CheckBox();
             this.circularSendingTimer = new System.Windows.Forms.Timer(this.components);
+            this.helpToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.textBoxErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.circularSendingGroupBox.SuspendLayout();
             this.displayModeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // sentDataRichTextBox
@@ -184,8 +187,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataToSendTextBox.Location = new System.Drawing.Point(3, 193);
             this.dataToSendTextBox.Name = "dataToSendTextBox";
-            this.dataToSendTextBox.Size = new System.Drawing.Size(421, 20);
+            this.dataToSendTextBox.Size = new System.Drawing.Size(407, 20);
             this.dataToSendTextBox.TabIndex = 7;
+            this.helpToolTip.SetToolTip(this.dataToSendTextBox, global::F_RS232Client.Plugins.Core.Resources.helpText);
             this.dataToSendTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataToSendTextBox_KeyPress);
             // 
             // clearAfterSendingCheckBox
@@ -202,6 +206,20 @@
             // circularSendingTimer
             // 
             this.circularSendingTimer.Tick += new System.EventHandler(this.circularSendingTimer_Tick);
+            // 
+            // helpToolTip
+            // 
+            this.helpToolTip.AutomaticDelay = 10000;
+            this.helpToolTip.AutoPopDelay = 100000;
+            this.helpToolTip.InitialDelay = 1000;
+            this.helpToolTip.IsBalloon = true;
+            this.helpToolTip.ReshowDelay = 100;
+            this.helpToolTip.ShowAlways = true;
+            this.helpToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // textBoxErrorProvider
+            // 
+            this.textBoxErrorProvider.ContainerControl = this;
             // 
             // BaseWriterControl
             // 
@@ -220,6 +238,7 @@
             this.circularSendingGroupBox.PerformLayout();
             this.displayModeGroupBox.ResumeLayout(false);
             this.displayModeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +261,7 @@
         private System.Windows.Forms.TextBox dataToSendTextBox;
         private System.Windows.Forms.CheckBox clearAfterSendingCheckBox;
         private System.Windows.Forms.Timer circularSendingTimer;
+        private System.Windows.Forms.ToolTip helpToolTip;
+        private System.Windows.Forms.ErrorProvider textBoxErrorProvider;
     }
 }

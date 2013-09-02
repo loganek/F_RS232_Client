@@ -22,15 +22,26 @@ namespace F_RS232Client.Plugins.Core.Controls
 
         private string Send()
         {
-            var strConverter = new StrToBytesConverter(dataToSendTextBox.Text);
-            var byteConverter = new BytesToStrConverter(strConverter.GetBytes(), GetSelectedDisplayMode());
-            writer.Write(strConverter.GetBytes());
-            
-            return byteConverter.GetString();
+            try
+            {
+                var strConverter = new StrToBytesConverter(dataToSendTextBox.Text);                
+                writer.Write(strConverter.GetBytes());
+                var byteConverter = new BytesToStrConverter(strConverter.GetBytes(), GetSelectedDisplayMode());
+                textBoxErrorProvider.Clear();
+                return byteConverter.GetString();
+            }
+            catch (Exception)
+            {
+                textBoxErrorProvider.SetError(dataToSendTextBox, Resources.helpText);
+                return null;
+            }
         }
 
         private void AppendToRichTextBox(string sentString)
         {
+            if (String.IsNullOrEmpty(sentString))
+                return;
+
             sentDataRichTextBox.AppendText(sentString);
             sentDataRichTextBox.SelectionStart = sentDataRichTextBox.Text.Length;
             sentDataRichTextBox.ScrollToCaret();
