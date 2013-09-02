@@ -54,10 +54,9 @@ namespace F_RS232Client.Plugins.Core
                 SendData(this, e);
         }
 
-        public void Write(string text)
+        public void Write(byte[] data)
         {
-            var converter = new StrToBytesConverter(text);
-            OnSendData(new NewDataEventArgs(converter.GetBytes()));
+            OnSendData(new NewDataEventArgs(data));
         }
     }
 }

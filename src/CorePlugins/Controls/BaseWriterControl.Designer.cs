@@ -73,7 +73,6 @@
             this.octDMRadioButton.Name = "octDMRadioButton";
             this.octDMRadioButton.Size = new System.Drawing.Size(47, 17);
             this.octDMRadioButton.TabIndex = 3;
-            this.octDMRadioButton.TabStop = true;
             this.octDMRadioButton.Text = "OCT";
             this.octDMRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -89,6 +88,7 @@
             // hexDMRadioButton
             // 
             this.hexDMRadioButton.AutoSize = true;
+            this.hexDMRadioButton.Checked = true;
             this.hexDMRadioButton.Location = new System.Drawing.Point(64, 19);
             this.hexDMRadioButton.Name = "hexDMRadioButton";
             this.hexDMRadioButton.Size = new System.Drawing.Size(47, 17);
@@ -126,7 +126,6 @@
             this.decDMRadioButton.Name = "decDMRadioButton";
             this.decDMRadioButton.Size = new System.Drawing.Size(47, 17);
             this.decDMRadioButton.TabIndex = 1;
-            this.decDMRadioButton.TabStop = true;
             this.decDMRadioButton.Text = "DEC";
             this.decDMRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +157,6 @@
             this.asciiDMRadioButton.Name = "asciiDMRadioButton";
             this.asciiDMRadioButton.Size = new System.Drawing.Size(52, 17);
             this.asciiDMRadioButton.TabIndex = 0;
-            this.asciiDMRadioButton.TabStop = true;
             this.asciiDMRadioButton.Text = "ASCII";
             this.asciiDMRadioButton.UseVisualStyleBackColor = true;
             // 
