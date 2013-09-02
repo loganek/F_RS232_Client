@@ -95,7 +95,7 @@ namespace F_RS232Client.Plugins.Core.Controls
             Interlocked.Increment(ref indicatorCounter.Value);
             new Thread(() =>
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(10);
                 DoInvoke(indicatorPanel, () =>
                 {
                     Interlocked.Decrement(ref indicatorCounter.Value);

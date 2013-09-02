@@ -70,6 +70,7 @@ namespace F_RS232Client.Plugins.Core
         {
             CheckPortOpen();
             internalPort.Write(bytes, 0, bytes.Length);
+            NotifyWrite();
         }
 
         public void Write(byte b)
@@ -81,6 +82,7 @@ namespace F_RS232Client.Plugins.Core
         {
             CheckPortOpen();
             internalPort.Write(str);
+            NotifyWrite();
         }
 
         #endregion
@@ -138,6 +140,11 @@ namespace F_RS232Client.Plugins.Core
         {
             if (!internalPort.IsOpen)
                 throw new Exception("Cannot send data: port is closed");
+        }
+
+        private void NotifyWrite()
+        {
+            control.DataSent(this, null);
         }
     }
 }
