@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using F_RS232Client.Plugins;
 
@@ -16,8 +17,20 @@ namespace F_RS232Client.PluginSupport
             {
                 (plugin as IDataWriterPlugin).SendData += WriteToDataConnection;
             }
+            else if(plugin is IDataConnectionPlugin)
+            {
+                (plugin as IDataConnectionPlugin).ReceiveNewData += OnReceiveNewData;
+            }
 
             plugin.Start();
+        }
+
+        private void OnReceiveNewData(object sender, NewDataEventArgs e)
+        {
+            foreach (var plugin in selectedPlugins.OfType<IDataViewerPlugin>())
+            {
+                plugin.AppendData(e.Data);
+            }
         }
 
         public void RemovePlugin(IPlugin plugin)

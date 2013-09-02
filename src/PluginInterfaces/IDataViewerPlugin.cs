@@ -2,5 +2,6 @@
 {
     public interface IDataViewerPlugin : IPlugin
     {
+        void AppendData(byte[] data);
     }
 }

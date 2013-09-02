@@ -10,7 +10,7 @@ namespace F_RS232Client
         public MainWindow()
         {
             InitializeComponent();
-            pluginMenuLoader = new PluginMenuLoader(pluginsToolStripMenuItem, baseWriterPanel, null, connectionPanel);
+            pluginMenuLoader = new PluginMenuLoader(pluginsToolStripMenuItem, baseWriterPanel, baseViewerPanel, connectionPanel);
             pluginMenuLoader.LoadMenu();
         }
     }

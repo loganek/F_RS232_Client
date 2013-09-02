@@ -38,6 +38,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionPanel = new System.Windows.Forms.Panel();
+            this.baseViewerPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,14 +115,22 @@
             // 
             this.connectionPanel.Location = new System.Drawing.Point(47, 37);
             this.connectionPanel.Name = "connectionPanel";
-            this.connectionPanel.Size = new System.Drawing.Size(219, 104);
+            this.connectionPanel.Size = new System.Drawing.Size(219, 261);
             this.connectionPanel.TabIndex = 0;
+            // 
+            // baseViewerPanel
+            // 
+            this.baseViewerPanel.Location = new System.Drawing.Point(316, 218);
+            this.baseViewerPanel.Name = "baseViewerPanel";
+            this.baseViewerPanel.Size = new System.Drawing.Size(494, 185);
+            this.baseViewerPanel.TabIndex = 2;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 415);
+            this.Controls.Add(this.baseViewerPanel);
             this.Controls.Add(this.connectionPanel);
             this.Controls.Add(this.baseWriterPanel);
             this.Controls.Add(this.mainMenuStrip);
@@ -147,6 +156,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem reloadPluginsToolStripMenuItem;
         private System.Windows.Forms.Panel connectionPanel;
+        private System.Windows.Forms.Panel baseViewerPanel;
     }
 }
 

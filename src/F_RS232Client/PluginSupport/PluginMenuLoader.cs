@@ -9,7 +9,7 @@ namespace F_RS232Client.PluginSupport
     {
         private readonly ToolStripMenuItem baseMenuItem;
         private const int PositionOfUnknowPlugin = 2;
-        private PluginManager manager = new PluginManager();
+        private readonly PluginManager manager = new PluginManager();
 
         #region Base panels
 

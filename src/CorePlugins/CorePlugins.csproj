@@ -57,6 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseViewer.cs" />
+    <Compile Include="Controls\BaseViewerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseViewerControl.Designer.cs">
+      <DependentUpon>BaseViewerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +115,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\BaseViewerControl.resx">
+      <DependentUpon>BaseViewerControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BaseWriterControl.resx">
       <DependentUpon>BaseWriterControl.cs</DependentUpon>
     </EmbeddedResource>
