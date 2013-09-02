@@ -5,7 +5,7 @@ using System.Text;
 
 namespace F_RS232Client.Plugins.Core
 {
-    enum DisplayMode
+    public enum DisplayMode
     {
         Ascii,
         Oct,
@@ -109,7 +109,7 @@ namespace F_RS232Client.Plugins.Core
         #endregion
     }
 
-    internal class BytesToStrConverter
+    public class BytesToStrConverter
     {
         #region Members
         private readonly byte[] bytes;
