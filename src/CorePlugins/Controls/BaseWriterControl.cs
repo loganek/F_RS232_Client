@@ -95,5 +95,10 @@ namespace F_RS232Client.Plugins.Core.Controls
         {
             AppendToRichTextBox(Send());
         }
+
+        private void clearConsoleButton_Click(object sender, EventArgs e)
+        {
+            sentDataRichTextBox.Clear();
+        }
     }
 }

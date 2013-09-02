@@ -158,6 +158,7 @@
             this.clearConsoleButton.TabIndex = 9;
             this.clearConsoleButton.Text = "Clear Console";
             this.clearConsoleButton.UseVisualStyleBackColor = true;
+            this.clearConsoleButton.Click += new System.EventHandler(this.clearConsoleButton_Click);
             // 
             // asciiDMRadioButton
             // 
