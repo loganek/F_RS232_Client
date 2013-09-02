@@ -41,6 +41,7 @@
             this.asciiDMRadioButton = new System.Windows.Forms.RadioButton();
             this.displayModeGroupBox = new System.Windows.Forms.GroupBox();
             this.dataToSendTextBox = new System.Windows.Forms.TextBox();
+            this.clearAfterSendingCheckBox = new System.Windows.Forms.CheckBox();
             this.circularSendingGroupBox.SuspendLayout();
             this.displayModeGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             this.sentDataRichTextBox.Location = new System.Drawing.Point(3, 2);
             this.sentDataRichTextBox.Name = "sentDataRichTextBox";
             this.sentDataRichTextBox.ReadOnly = true;
-            this.sentDataRichTextBox.Size = new System.Drawing.Size(503, 184);
+            this.sentDataRichTextBox.Size = new System.Drawing.Size(513, 185);
             this.sentDataRichTextBox.TabIndex = 6;
             this.sentDataRichTextBox.Text = "";
             // 
@@ -112,7 +113,7 @@
             this.circularSendingGroupBox.Controls.Add(this.startStopCSButton);
             this.circularSendingGroupBox.Controls.Add(this.label1);
             this.circularSendingGroupBox.Controls.Add(this.intervalCSTextBox);
-            this.circularSendingGroupBox.Location = new System.Drawing.Point(512, 108);
+            this.circularSendingGroupBox.Location = new System.Drawing.Point(522, 108);
             this.circularSendingGroupBox.Name = "circularSendingGroupBox";
             this.circularSendingGroupBox.Size = new System.Drawing.Size(122, 74);
             this.circularSendingGroupBox.TabIndex = 10;
@@ -132,7 +133,7 @@
             // sendButton
             // 
             this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendButton.Location = new System.Drawing.Point(512, 187);
+            this.sendButton.Location = new System.Drawing.Point(522, 191);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(122, 23);
             this.sendButton.TabIndex = 11;
@@ -143,7 +144,7 @@
             // clearConsoleButton
             // 
             this.clearConsoleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearConsoleButton.Location = new System.Drawing.Point(512, 77);
+            this.clearConsoleButton.Location = new System.Drawing.Point(522, 77);
             this.clearConsoleButton.Name = "clearConsoleButton";
             this.clearConsoleButton.Size = new System.Drawing.Size(122, 25);
             this.clearConsoleButton.TabIndex = 9;
@@ -167,7 +168,7 @@
             this.displayModeGroupBox.Controls.Add(this.hexDMRadioButton);
             this.displayModeGroupBox.Controls.Add(this.decDMRadioButton);
             this.displayModeGroupBox.Controls.Add(this.asciiDMRadioButton);
-            this.displayModeGroupBox.Location = new System.Drawing.Point(512, 2);
+            this.displayModeGroupBox.Location = new System.Drawing.Point(522, 2);
             this.displayModeGroupBox.Name = "displayModeGroupBox";
             this.displayModeGroupBox.Size = new System.Drawing.Size(122, 69);
             this.displayModeGroupBox.TabIndex = 8;
@@ -178,15 +179,27 @@
             // 
             this.dataToSendTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataToSendTextBox.Location = new System.Drawing.Point(3, 189);
+            this.dataToSendTextBox.Location = new System.Drawing.Point(3, 193);
             this.dataToSendTextBox.Name = "dataToSendTextBox";
-            this.dataToSendTextBox.Size = new System.Drawing.Size(503, 20);
+            this.dataToSendTextBox.Size = new System.Drawing.Size(421, 20);
             this.dataToSendTextBox.TabIndex = 7;
+            // 
+            // clearAfterSendingCheckBox
+            // 
+            this.clearAfterSendingCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearAfterSendingCheckBox.AutoSize = true;
+            this.clearAfterSendingCheckBox.Location = new System.Drawing.Point(430, 188);
+            this.clearAfterSendingCheckBox.Name = "clearAfterSendingCheckBox";
+            this.clearAfterSendingCheckBox.Size = new System.Drawing.Size(87, 30);
+            this.clearAfterSendingCheckBox.TabIndex = 12;
+            this.clearAfterSendingCheckBox.Text = "Clear textbox\r\nafter sending";
+            this.clearAfterSendingCheckBox.UseVisualStyleBackColor = true;
             // 
             // BaseWriterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clearAfterSendingCheckBox);
             this.Controls.Add(this.sentDataRichTextBox);
             this.Controls.Add(this.circularSendingGroupBox);
             this.Controls.Add(this.sendButton);
@@ -194,7 +207,7 @@
             this.Controls.Add(this.displayModeGroupBox);
             this.Controls.Add(this.dataToSendTextBox);
             this.Name = "BaseWriterControl";
-            this.Size = new System.Drawing.Size(637, 213);
+            this.Size = new System.Drawing.Size(647, 221);
             this.circularSendingGroupBox.ResumeLayout(false);
             this.circularSendingGroupBox.PerformLayout();
             this.displayModeGroupBox.ResumeLayout(false);
@@ -219,5 +232,6 @@
         private System.Windows.Forms.RadioButton asciiDMRadioButton;
         private System.Windows.Forms.GroupBox displayModeGroupBox;
         private System.Windows.Forms.TextBox dataToSendTextBox;
+        private System.Windows.Forms.CheckBox clearAfterSendingCheckBox;
     }
 }
