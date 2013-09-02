@@ -183,6 +183,7 @@
             this.dataToSendTextBox.Name = "dataToSendTextBox";
             this.dataToSendTextBox.Size = new System.Drawing.Size(421, 20);
             this.dataToSendTextBox.TabIndex = 7;
+            this.dataToSendTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataToSendTextBox_KeyPress);
             // 
             // clearAfterSendingCheckBox
             // 

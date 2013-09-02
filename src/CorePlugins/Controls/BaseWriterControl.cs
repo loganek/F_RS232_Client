@@ -50,5 +50,13 @@ namespace F_RS232Client.Plugins.Core.Controls
             
             return decDMRadioButton.Checked ? DisplayMode.Dec : DisplayMode.Hex;
         }
+
+        private void dataToSendTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                Send();
+            }
+        }
     }
 }
