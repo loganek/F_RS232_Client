@@ -14,11 +14,7 @@ namespace F_RS232Client.PluginSupport
 
             if (plugin is IDataWriterPlugin)
             {
-                foreach (var p in selectedPlugins.OfType<IDataConnectionPlugin>())
-                {
-                    var p1 = p;
-                    (plugin as IDataWriterPlugin).SendData += (sender, args) => WriteToDataConnection(p1, args.Data);
-                }
+                (plugin as IDataWriterPlugin).SendData += WriteToDataConnection;
             }
 
             plugin.Start();
@@ -35,9 +31,12 @@ namespace F_RS232Client.PluginSupport
             return selectedPlugins.Contains(plugin);
         }
 
-        private void WriteToDataConnection(IDataConnectionPlugin plugin, byte[] data)
+        private void WriteToDataConnection(object sender, NewDataEventArgs e)
         {
-            plugin.Write(data);
+            foreach (var connectionPlugin in selectedPlugins.OfType<IDataConnectionPlugin>())
+            {
+                connectionPlugin.Write(e.Data);
+            }
         }
     }
 }
