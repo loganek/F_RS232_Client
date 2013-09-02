@@ -75,7 +75,7 @@ namespace F_RS232Client.Plugins.Core.Controls
         public void SetConnectionState(bool state)
         {
             connectionState = state;
-            DoInvoke(connectButton, () =>
+            Utils.DoInvoke(connectButton, () =>
                                     connectButton.Text = connectionState ? "Disconnect" : "Connect");
         }
 
@@ -96,7 +96,7 @@ namespace F_RS232Client.Plugins.Core.Controls
             new Thread(() =>
             {
                 Thread.Sleep(10);
-                DoInvoke(indicatorPanel, () =>
+                Utils.DoInvoke(indicatorPanel, () =>
                 {
                     Interlocked.Decrement(ref indicatorCounter.Value);
 
@@ -126,14 +126,6 @@ namespace F_RS232Client.Plugins.Core.Controls
             }
             else
                 connectButton.Enabled = false | connectionState;
-        }
-
-        private void DoInvoke(Control control, Action action)
-        {
-            if (control.InvokeRequired)
-                control.Invoke(action);
-            else
-                action();
         }
 
         private void connectButton_Click(object sender, EventArgs e)
