@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace F_RS232Client_Test
+namespace CorePlugins_Test
 {
     [TestClass]
     public class StringParser
@@ -9,13 +9,13 @@ namespace F_RS232Client_Test
         [TestMethod]
         public void ExpectedEmptyStringOnNullInput()
         {
-            Assert.AreEqual(string.Empty, new F_RS232Client.BytesToStrConverter(null).GetString());
+            Assert.AreEqual(string.Empty, new F_RS232Client.Plugins.Core.BytesToStrConverter(null).GetString());
         }
 
         [TestMethod]
         public void ExpectedEmptyStringOnEmptyInput()
         {
-            Assert.AreEqual(string.Empty, new F_RS232Client.BytesToStrConverter(new byte[]{}).GetString());
+            Assert.AreEqual(string.Empty, new F_RS232Client.Plugins.Core.BytesToStrConverter(new byte[] { }).GetString());
         }
 
         [TestMethod]
@@ -24,19 +24,19 @@ namespace F_RS232Client_Test
             var input = new byte[] {0, 2, 25, 30, 31, 32, 49, 68, 96, 125, 126, 127, 200, 230, 255 };
             const string expected = "\\x00\\x02\\x19\\x1E\\x1F 1D`}~\\x7F\\xC8\\xE6\\xFF";
 
-            Assert.AreEqual(expected, new F_RS232Client.BytesToStrConverter(input).GetString());
+            Assert.AreEqual(expected, new F_RS232Client.Plugins.Core.BytesToStrConverter(input).GetString());
         }
 
         [TestMethod]
         public void ExpectedEmptyByteArrayOnEmptyInput()
         {
-            Assert.AreEqual(0, new F_RS232Client.StrToBytesConverter(string.Empty).GetBytes().Length);
+            Assert.AreEqual(0, new F_RS232Client.Plugins.Core.StrToBytesConverter(string.Empty).GetBytes().Length);
         }
 
         [TestMethod]
         public void ExpectedEmptyByteArrayOnNullInput()
         {
-            Assert.AreEqual(0, new F_RS232Client.StrToBytesConverter(null).GetBytes().Length);
+            Assert.AreEqual(0, new F_RS232Client.Plugins.Core.StrToBytesConverter(null).GetBytes().Length);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace F_RS232Client_Test
                 32, 111, 116, 104, 101, 114, 32, 19, 32, 115, 112, 101, 99, 105, 
                 97, 108, 32, 115, 105, 103, 110, 115};
 
-            byte[] output = new F_RS232Client.StrToBytesConverter(input).GetBytes();
+            byte[] output = new F_RS232Client.Plugins.Core.StrToBytesConverter(input).GetBytes();
 
             Assert.AreEqual(expected.Length, output.Length);
 
@@ -63,7 +63,7 @@ namespace F_RS232Client_Test
 
             try
             {
-                new F_RS232Client.StrToBytesConverter(input).GetBytes();
+                new F_RS232Client.Plugins.Core.StrToBytesConverter(input).GetBytes();
                 Assert.Fail();
             }
             catch (Exception)
@@ -77,7 +77,7 @@ namespace F_RS232Client_Test
             const string input = @"A\x44B\d102\d123";
             var expected = new byte[] { 65, 0x44, 66, 102, 123 };
 
-            byte[] output = new F_RS232Client.StrToBytesConverter(input).GetBytes();
+            byte[] output = new F_RS232Client.Plugins.Core.StrToBytesConverter(input).GetBytes();
 
             Assert.AreEqual(expected.Length, output.Length);
 
@@ -91,7 +91,7 @@ namespace F_RS232Client_Test
             bool ok = false;
             try
             {
-                new F_RS232Client.StrToBytesConverter(@"This is too short hex: \x1").GetBytes();
+                new F_RS232Client.Plugins.Core.StrToBytesConverter(@"This is too short hex: \x1").GetBytes();
             }
             catch
             {
@@ -110,7 +110,7 @@ namespace F_RS232Client_Test
             bool ok = false;
             try
             {
-                new F_RS232Client.StrToBytesConverter(@"This is too short dec: \d13").GetBytes();
+                new F_RS232Client.Plugins.Core.StrToBytesConverter(@"This is too short dec: \d13").GetBytes();
             }
             catch
             {
@@ -129,7 +129,7 @@ namespace F_RS232Client_Test
             bool ok = false;
             try
             {
-                new F_RS232Client.StrToBytesConverter(@"This is unknow character: \s").GetBytes();
+                new F_RS232Client.Plugins.Core.StrToBytesConverter(@"This is unknow character: \s").GetBytes();
             }
             catch
             {
