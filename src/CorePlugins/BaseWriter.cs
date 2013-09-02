@@ -1,12 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using F_RS232Client.Plugins.Core.Controls;
 
 namespace F_RS232Client.Plugins.Core
 {
     public class BaseWriter : IDataWriterPlugin
     {
+        private readonly BaseWriterControl control;
+
         public BaseWriter()
         {
+            control = new BaseWriterControl(this);
             Name = "Core Base Writer";
             Description = "Writes data to an element";
             Author = "Marcin Kolny <marcin.kolny@gmail.com>";
@@ -19,7 +23,12 @@ namespace F_RS232Client.Plugins.Core
         public string Description { get; private set; }
         public string Author { get; private set; }
         public string Version { get; private set; }
-        
+
+        public Control GetControl()
+        {
+            return control;
+        }
+
         public void Start()
         {
         }
@@ -33,13 +42,22 @@ namespace F_RS232Client.Plugins.Core
         }
         #endregion
 
-        #region IBasePlugin implementation
+        #region DataWriterPlugin implementation
 
-        public Control GetControl()
-        {
-            return new BaseWriterControl();
-        }
+        public event EventHandler<NewDataEventArgs> SendData;
 
         #endregion
+
+        protected virtual void OnSendData(NewDataEventArgs e)
+        {
+            if (SendData != null) 
+                SendData(this, e);
+        }
+
+        public void Write(string text)
+        {
+            var converter = new StrToBytesConverter(text);
+            OnSendData(new NewDataEventArgs(converter.GetBytes()));
+        }
     }
 }

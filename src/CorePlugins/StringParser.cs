@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace F_RS232Client
+namespace F_RS232Client.Plugins.Core
 {
     public class StrToBytesConverter
     {

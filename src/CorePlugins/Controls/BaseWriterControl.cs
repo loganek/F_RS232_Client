@@ -4,9 +4,18 @@ namespace F_RS232Client.Plugins.Core.Controls
 {
     public partial class BaseWriterControl : UserControl
     {
-        public BaseWriterControl()
+        private readonly BaseWriter writer;
+
+        public BaseWriterControl(BaseWriter writer)
         {
             InitializeComponent();
+
+            this.writer = writer;
+        }
+
+        private void sendButton_Click(object sender, System.EventArgs e)
+        {
+            writer.Write(dataToSendTextBox.Text);
         }
     }
 }

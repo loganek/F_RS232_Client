@@ -139,6 +139,7 @@
             this.sendButton.TabIndex = 11;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // clearConsoleButton
             // 
