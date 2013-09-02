@@ -42,8 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rxIndicatorGroupBox = new System.Windows.Forms.GroupBox();
-            this.txIndicatorGroupBox = new System.Windows.Forms.GroupBox();
             this.rxIndicatorPanel = new System.Windows.Forms.Panel();
+            this.txIndicatorGroupBox = new System.Windows.Forms.GroupBox();
             this.txIndicatorPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.rxIndicatorGroupBox.SuspendLayout();
@@ -58,13 +58,13 @@
             this.availablePortsComboBox.FormattingEnabled = true;
             this.availablePortsComboBox.Location = new System.Drawing.Point(68, 3);
             this.availablePortsComboBox.Name = "availablePortsComboBox";
-            this.availablePortsComboBox.Size = new System.Drawing.Size(77, 21);
+            this.availablePortsComboBox.Size = new System.Drawing.Size(101, 21);
             this.availablePortsComboBox.TabIndex = 0;
             // 
             // rescanPortsButton
             // 
             this.rescanPortsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rescanPortsButton.Location = new System.Drawing.Point(151, 3);
+            this.rescanPortsButton.Location = new System.Drawing.Point(175, 3);
             this.rescanPortsButton.Name = "rescanPortsButton";
             this.rescanPortsButton.Size = new System.Drawing.Size(75, 23);
             this.rescanPortsButton.TabIndex = 1;
@@ -74,12 +74,11 @@
             // 
             // connectButton
             // 
-            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.connectButton.Location = new System.Drawing.Point(7, 191);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(219, 26);
+            this.connectButton.Size = new System.Drawing.Size(243, 25);
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -104,7 +103,7 @@
             "115200"});
             this.baudRateComboBox.Location = new System.Drawing.Point(68, 30);
             this.baudRateComboBox.Name = "baudRateComboBox";
-            this.baudRateComboBox.Size = new System.Drawing.Size(158, 21);
+            this.baudRateComboBox.Size = new System.Drawing.Size(182, 21);
             this.baudRateComboBox.TabIndex = 3;
             this.baudRateComboBox.Text = "9600";
             // 
@@ -122,7 +121,7 @@
             "space"});
             this.parityComboBox.Location = new System.Drawing.Point(68, 61);
             this.parityComboBox.Name = "parityComboBox";
-            this.parityComboBox.Size = new System.Drawing.Size(158, 21);
+            this.parityComboBox.Size = new System.Drawing.Size(182, 21);
             this.parityComboBox.TabIndex = 4;
             // 
             // dataBitsComboBox
@@ -136,7 +135,7 @@
             "8"});
             this.dataBitsComboBox.Location = new System.Drawing.Point(68, 88);
             this.dataBitsComboBox.Name = "dataBitsComboBox";
-            this.dataBitsComboBox.Size = new System.Drawing.Size(158, 21);
+            this.dataBitsComboBox.Size = new System.Drawing.Size(182, 21);
             this.dataBitsComboBox.TabIndex = 5;
             // 
             // stopBitsComboBox
@@ -152,7 +151,7 @@
             "2"});
             this.stopBitsComboBox.Location = new System.Drawing.Point(68, 115);
             this.stopBitsComboBox.Name = "stopBitsComboBox";
-            this.stopBitsComboBox.Size = new System.Drawing.Size(158, 21);
+            this.stopBitsComboBox.Size = new System.Drawing.Size(182, 21);
             this.stopBitsComboBox.TabIndex = 6;
             // 
             // label1
@@ -213,7 +212,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(219, 43);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(243, 43);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // rxIndicatorGroupBox
@@ -222,42 +221,43 @@
             this.rxIndicatorGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rxIndicatorGroupBox.Location = new System.Drawing.Point(3, 3);
             this.rxIndicatorGroupBox.Name = "rxIndicatorGroupBox";
-            this.rxIndicatorGroupBox.Size = new System.Drawing.Size(103, 37);
+            this.rxIndicatorGroupBox.Size = new System.Drawing.Size(115, 37);
             this.rxIndicatorGroupBox.TabIndex = 0;
             this.rxIndicatorGroupBox.TabStop = false;
             this.rxIndicatorGroupBox.Text = "RX Indicator";
-            // 
-            // txIndicatorGroupBox
-            // 
-            this.txIndicatorGroupBox.Controls.Add(this.txIndicatorPanel);
-            this.txIndicatorGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txIndicatorGroupBox.Location = new System.Drawing.Point(112, 3);
-            this.txIndicatorGroupBox.Name = "txIndicatorGroupBox";
-            this.txIndicatorGroupBox.Size = new System.Drawing.Size(104, 37);
-            this.txIndicatorGroupBox.TabIndex = 1;
-            this.txIndicatorGroupBox.TabStop = false;
-            this.txIndicatorGroupBox.Text = "TX Indicator";
             // 
             // rxIndicatorPanel
             // 
             this.rxIndicatorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rxIndicatorPanel.Location = new System.Drawing.Point(3, 16);
             this.rxIndicatorPanel.Name = "rxIndicatorPanel";
-            this.rxIndicatorPanel.Size = new System.Drawing.Size(97, 18);
+            this.rxIndicatorPanel.Size = new System.Drawing.Size(109, 18);
             this.rxIndicatorPanel.TabIndex = 0;
+            // 
+            // txIndicatorGroupBox
+            // 
+            this.txIndicatorGroupBox.Controls.Add(this.txIndicatorPanel);
+            this.txIndicatorGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txIndicatorGroupBox.Location = new System.Drawing.Point(124, 3);
+            this.txIndicatorGroupBox.Name = "txIndicatorGroupBox";
+            this.txIndicatorGroupBox.Size = new System.Drawing.Size(116, 37);
+            this.txIndicatorGroupBox.TabIndex = 1;
+            this.txIndicatorGroupBox.TabStop = false;
+            this.txIndicatorGroupBox.Text = "TX Indicator";
             // 
             // txIndicatorPanel
             // 
             this.txIndicatorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txIndicatorPanel.Location = new System.Drawing.Point(3, 16);
             this.txIndicatorPanel.Name = "txIndicatorPanel";
-            this.txIndicatorPanel.Size = new System.Drawing.Size(98, 18);
+            this.txIndicatorPanel.Size = new System.Drawing.Size(110, 18);
             this.txIndicatorPanel.TabIndex = 0;
             // 
             // RS232ConnectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -272,7 +272,7 @@
             this.Controls.Add(this.rescanPortsButton);
             this.Controls.Add(this.availablePortsComboBox);
             this.Name = "RS232ConnectionControl";
-            this.Size = new System.Drawing.Size(229, 223);
+            this.Size = new System.Drawing.Size(253, 222);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.rxIndicatorGroupBox.ResumeLayout(false);
             this.txIndicatorGroupBox.ResumeLayout(false);

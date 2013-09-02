@@ -45,7 +45,7 @@
             // 
             this.baseWriterPanel.Location = new System.Drawing.Point(362, 37);
             this.baseWriterPanel.Name = "baseWriterPanel";
-            this.baseWriterPanel.Size = new System.Drawing.Size(330, 257);
+            this.baseWriterPanel.Size = new System.Drawing.Size(308, 162);
             this.baseWriterPanel.TabIndex = 0;
             // 
             // mainMenuStrip
@@ -114,7 +114,7 @@
             // 
             this.connectionPanel.Location = new System.Drawing.Point(47, 37);
             this.connectionPanel.Name = "connectionPanel";
-            this.connectionPanel.Size = new System.Drawing.Size(297, 257);
+            this.connectionPanel.Size = new System.Drawing.Size(219, 104);
             this.connectionPanel.TabIndex = 0;
             // 
             // MainWindow

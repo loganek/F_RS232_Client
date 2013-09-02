@@ -46,9 +46,11 @@
             this.circularSendingTimer = new System.Windows.Forms.Timer(this.components);
             this.helpToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.circularSendingGroupBox.SuspendLayout();
             this.displayModeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxErrorProvider)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sentDataRichTextBox
@@ -56,10 +58,10 @@
             this.sentDataRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sentDataRichTextBox.Location = new System.Drawing.Point(3, 2);
+            this.sentDataRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.sentDataRichTextBox.Name = "sentDataRichTextBox";
             this.sentDataRichTextBox.ReadOnly = true;
-            this.sentDataRichTextBox.Size = new System.Drawing.Size(513, 185);
+            this.sentDataRichTextBox.Size = new System.Drawing.Size(531, 191);
             this.sentDataRichTextBox.TabIndex = 6;
             this.sentDataRichTextBox.Text = "";
             // 
@@ -119,7 +121,7 @@
             this.circularSendingGroupBox.Controls.Add(this.startStopCSButton);
             this.circularSendingGroupBox.Controls.Add(this.label1);
             this.circularSendingGroupBox.Controls.Add(this.intervalCSTextBox);
-            this.circularSendingGroupBox.Location = new System.Drawing.Point(522, 108);
+            this.circularSendingGroupBox.Location = new System.Drawing.Point(18, 109);
             this.circularSendingGroupBox.Name = "circularSendingGroupBox";
             this.circularSendingGroupBox.Size = new System.Drawing.Size(122, 74);
             this.circularSendingGroupBox.TabIndex = 10;
@@ -139,9 +141,9 @@
             // sendButton
             // 
             this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendButton.Location = new System.Drawing.Point(522, 191);
+            this.sendButton.Location = new System.Drawing.Point(558, 207);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(122, 23);
+            this.sendButton.Size = new System.Drawing.Size(125, 23);
             this.sendButton.TabIndex = 11;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
@@ -150,7 +152,7 @@
             // clearConsoleButton
             // 
             this.clearConsoleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearConsoleButton.Location = new System.Drawing.Point(522, 77);
+            this.clearConsoleButton.Location = new System.Drawing.Point(18, 78);
             this.clearConsoleButton.Name = "clearConsoleButton";
             this.clearConsoleButton.Size = new System.Drawing.Size(122, 25);
             this.clearConsoleButton.TabIndex = 9;
@@ -174,7 +176,7 @@
             this.displayModeGroupBox.Controls.Add(this.hexDMRadioButton);
             this.displayModeGroupBox.Controls.Add(this.decDMRadioButton);
             this.displayModeGroupBox.Controls.Add(this.asciiDMRadioButton);
-            this.displayModeGroupBox.Location = new System.Drawing.Point(522, 2);
+            this.displayModeGroupBox.Location = new System.Drawing.Point(18, 3);
             this.displayModeGroupBox.Name = "displayModeGroupBox";
             this.displayModeGroupBox.Size = new System.Drawing.Size(122, 69);
             this.displayModeGroupBox.TabIndex = 8;
@@ -185,9 +187,9 @@
             // 
             this.dataToSendTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataToSendTextBox.Location = new System.Drawing.Point(3, 193);
+            this.dataToSendTextBox.Location = new System.Drawing.Point(3, 209);
             this.dataToSendTextBox.Name = "dataToSendTextBox";
-            this.dataToSendTextBox.Size = new System.Drawing.Size(407, 20);
+            this.dataToSendTextBox.Size = new System.Drawing.Size(434, 20);
             this.dataToSendTextBox.TabIndex = 7;
             this.helpToolTip.SetToolTip(this.dataToSendTextBox, global::F_RS232Client.Plugins.Core.Resources.helpText);
             this.dataToSendTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataToSendTextBox_KeyPress);
@@ -196,7 +198,7 @@
             // 
             this.clearAfterSendingCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.clearAfterSendingCheckBox.AutoSize = true;
-            this.clearAfterSendingCheckBox.Location = new System.Drawing.Point(430, 188);
+            this.clearAfterSendingCheckBox.Location = new System.Drawing.Point(443, 204);
             this.clearAfterSendingCheckBox.Name = "clearAfterSendingCheckBox";
             this.clearAfterSendingCheckBox.Size = new System.Drawing.Size(87, 30);
             this.clearAfterSendingCheckBox.TabIndex = 12;
@@ -221,24 +223,36 @@
             // 
             this.textBoxErrorProvider.ContainerControl = this;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.displayModeGroupBox);
+            this.panel1.Controls.Add(this.circularSendingGroupBox);
+            this.panel1.Controls.Add(this.clearConsoleButton);
+            this.panel1.Location = new System.Drawing.Point(540, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(143, 194);
+            this.panel1.TabIndex = 13;
+            // 
             // BaseWriterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.clearAfterSendingCheckBox);
             this.Controls.Add(this.sentDataRichTextBox);
-            this.Controls.Add(this.circularSendingGroupBox);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.clearAfterSendingCheckBox);
             this.Controls.Add(this.sendButton);
-            this.Controls.Add(this.clearConsoleButton);
-            this.Controls.Add(this.displayModeGroupBox);
             this.Controls.Add(this.dataToSendTextBox);
             this.Name = "BaseWriterControl";
-            this.Size = new System.Drawing.Size(647, 221);
+            this.Size = new System.Drawing.Size(686, 237);
             this.circularSendingGroupBox.ResumeLayout(false);
             this.circularSendingGroupBox.PerformLayout();
             this.displayModeGroupBox.ResumeLayout(false);
             this.displayModeGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxErrorProvider)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,5 +277,6 @@
         private System.Windows.Forms.Timer circularSendingTimer;
         private System.Windows.Forms.ToolTip helpToolTip;
         private System.Windows.Forms.ErrorProvider textBoxErrorProvider;
+        private System.Windows.Forms.Panel panel1;
     }
 }
