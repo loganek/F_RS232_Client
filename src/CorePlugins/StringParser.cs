@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace F_RS232Client.Plugins.Core
 {
+    enum DisplayMode
+    {
+        Ascii,
+        Oct,
+        Dec,
+        Hex
+    }
+
     public class StrToBytesConverter
     {
         #region Consts and static members
@@ -100,17 +109,19 @@ namespace F_RS232Client.Plugins.Core
         #endregion
     }
 
-    public class BytesToStrConverter
+    internal class BytesToStrConverter
     {
         #region Members
         private readonly byte[] bytes;
         private string str;
         int currPos;
+        private readonly DisplayMode mode;
         #endregion
 
-        public BytesToStrConverter(byte[] bytes)
+        public BytesToStrConverter(byte[] bytes, DisplayMode mode)
         {
             this.bytes = bytes;
+            this.mode = mode;
         }
 
         public string GetString()
@@ -132,15 +143,29 @@ namespace F_RS232Client.Plugins.Core
 
             var strb = new StringBuilder();
 
-            for(currPos = 0; currPos < bytes.Length; currPos++)
+            for (currPos = 0; currPos < bytes.Length; currPos++)
             {
-                if (IsVisible())
-                    strb.Append(Convert.ToChar(bytes[currPos]));
-                else
-                    strb.Append(ToHex());
+                strb.Append(ToSelectedDisplayMode());
             }
 
             str = strb.ToString();
+        }
+
+        private string ToSelectedDisplayMode()
+        {
+            switch (mode)
+            {
+                case DisplayMode.Ascii:
+                    return ToAscii();
+                case DisplayMode.Oct:
+                    return "\\o" + Convert.ToString(bytes[currPos], 8);
+                case DisplayMode.Dec:
+                    return "\\d" + bytes[currPos].ToString(CultureInfo.InvariantCulture);
+                case DisplayMode.Hex:
+                    return ToHex();
+                default:
+                    throw new Exception("Unknow display mode");
+            }
         }
 
         private bool IsVisible()
@@ -148,10 +173,16 @@ namespace F_RS232Client.Plugins.Core
             return bytes[currPos] >= 32 && bytes[currPos] <= 126;
         }
 
+        private string ToAscii()
+        {
+            return IsVisible() ? Convert.ToChar(bytes[currPos]).ToString(CultureInfo.InvariantCulture) : ToHex();
+        }
+
         private string ToHex()
         {
             return "\\x" + bytes[currPos].ToString("X2");
         }
+
         #endregion
     }
 }
